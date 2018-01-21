@@ -1,0 +1,1042 @@
+telnet websitname port------------To check firewall open or not
+
+https://www.google.co.in
+
+protocal: https
+websitename: www.google.co.in
+
+port :443
+
+ip allocation types--2
+static-- ip never change
+dhcp--dynamic--ip will change
+-------------------------------------
+network template
+
+ping
+nslookup 
+tracert/traceroute/tracepath
+destinaion address/ip
+source ip
+=======================
+subnetmask
+dns--name,ip
+firewall
+
+client--------------------------->firewall|server|
+
+internet facing DMZ network----firewall/webservers
+
+client--------------->DMZ--------------->backend(app/db)
+
+loadbalancers are two types
+1)h/w lb--f5
+2)s/w--
+
+ip types
+===========================================
+
+Unix--cmd line--
+multi-user
+mult-tasking-----
+multi-session login with  username------
+
+Unix(AIX/HP-UX) and Linux(redhat/ubuntu/centos)
+IBM-AIX----Power Server
+
+
+
+Windows Server 2008---rdp session--terminal server
+
+Security(permissions)---file/directory/acl/username-pwd/iptables(firewall)/SElinux
+
+
+Windows Server---->.msi/bat/exe---->GUI
+Unix-----rpm/yum/source code/extract the archive---instalaltion types
+
+
+pgming--->source code----->compile----->execute
+
+
+
+Unix----
+
+IBM---AIX--
+Solaris---Solaris
+Redhat---RedhatLinux--
+HP----HP-UX
+================================
+kernel-OS--- uname -a
+
+machine/h-w-----0 and 1
+
+ls---------shell-------kernel-----1/0--------H/w
+shell--bash/csh/ksh/zsh
+
+echo $SHELL
+
+/bin---all users commands will be located
+
+
+
+
+
+
+
+high level language to low level language translator and communicates with h/w
+
+
+
+username----Deskstop
+
+C:\Users\username\Desktop\
+
+
+/home/<username>
+
+
+/home/test
+
+/home/tomcat
+
+/home/devop
+
+pwd
+
+
+User/admin--two types
+
+1)normal user(who will be created by root user)
+2)admin user----root--default- primary administrator---during OS installation--Super user
+
+
+/home/<normaluser>-------------home directory for users
+
+
+/ ---my computer--top directory--root directory
+
+/---directory
+
+/home
+
+/root-----only for root user home directory
+
+pwd
+
+/root
+
+normal user----root----Sudoers
+
+===========================================
+varibales---two types--1)user variables    2)System variables(caps letter)
+
+echo $SHELL---SHELL system varible
+echo $USER
+echo $PATH
+echo $DIRNAME
+
+maven_home=/opt/maven
+echo $maven_home
+set or env
+
+
+
+/bin--commands--any user
+ls
+cd
+date
+cp...etc
+
+/boot---os botable files
+
+/dev/<hard disc>--device information
+
+/dev/sda-----
+/dev/hda
+/dev/vda
+
+
+/etc------important os configuration files.
+/etc/hosts
+/etc/init.d----os bootables files
+/etc/cron
+/etc/logrotate
+/etc/system/*
+/etc/network
+/etc/fstab
+/etc/passwd
+/etc/group
+/etc/shadow
+/etc/mount
+
+
+/home----normal users home directory
+devopadmin--/home/devopadmin
+
+/lib---kernel modules
+
+/media---removable devices
+
+/mnt---mount purpose
+
+/opt/ and /usr ----------C:\ProgramFiles\
+
+/sbin--System/secure binaries----root /sudoer (normal)
+
+/tmp---copying files/temporary files storage
+
+/var-----runtime log files
+
+/var/log/messages
+/var/log/cron
+/var/log/secure
+
+/root----root user home directory
+
+/proc------------os runtime information ---0--virual directory
+memory information
+cpu core
+no of opened files--/etc/secuirty/limits.conf
+
+==============================================================
+date/what time files got modified
+size of the file
+owner/group
+is that file or directory
+permissions
+where am i 
+
+travering--
+
+
+
+
+
+1 tier/ Desktop based
+
+Client------------->Application(Server)------------->DB----------->Application
+=============================
+
+hostname
+
+
+[ec2-user@ip-172-31-72-227 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-72-227 ~]$ cd /tmp
+
+
+[ec2-user@ip-172-31-72-227 tmp]$ pwd
+/tmp
+[ec2-user@ip-172-31-72-227 tmp]$
+
+
+
+cd ../-------------->pwd---->/
+
+cd .. --------------->pwd--->/
+cd -----------OK
+cd ../../home/ec2-user---------->ok
+cd - --------->ok
+cd /home---------->pwd----------->/home-------->cd ec2-user----------->
+cd /home/ec2-user
+
+
+
+normal1 --- normal2 --- prompts-- normal2
+
+user-----root ----- i need root user passwd
+user-----root ----- Entering user password you can switchc to root ( in that case user has to be
+sudoer)
+
+user ----root----without asking user or root password you can switch to root(sudoer)
+you have to add sudo command.
+
+root -- any user ---no password
+
+
+ec2 instance( ami)/image--base template/base image
+
+
+
+ec2-user
+/home/ec2-user
+
+cd /opt
+pwd---------->/opt
+
+
+sudo su  root
+
+pwd
+
+/opt
+
+
+
+
+
+su - <it takes to user home directory>
+
+
+vi ---editor
+escape--- not edit---dafult----i---insert mode-----esacape----:wq!
+insert mode---edit/update--
+execute mode
+
+To get line numbers
+
+esc--->:set nu
+To go end of the file---->shift+g(G)
+first line of the file--->gg
+To seach a keyword ---->esc--->/keyword---->to check another occurence--->n
+to copy a line --->esc--->press--yy
+to paste--->p
+
+
+how to create one user id in 1000 servers ? what are possible ?
+how to make one user in 1000 servers as a sudoer user ?
+
+
+[root@ip-172-31-72-227 tmp]# history
+    1  yum install traceroute*
+    2  traceroute 49.205.223.43
+    3  eexit
+    4  exit
+    5  pwd
+    6  exit
+    7  visudo
+    8  cat /etc/redhat-release
+    9  ls -l /etc/redhat-release
+   10  cat /etc/redhat-release
+   11  ps -ef
+   12  ps -ef | grep tomcat
+   13  ps -ef | grep puppet
+   14  mkdir test
+   15  pwd
+   16  ls -ltr
+   17  pwd
+   18  mkdir test1 test2 test3 test4
+   19  ls -ltr
+   20  whoami
+   21  id
+   22  ls -ltr
+   23  dirs
+   24  ls dirs
+   25  ls -ltr
+   26  ls -ltr test*
+   27  ls -ld test*
+   28  ls -ltr test
+   29  ls -ld test
+   30  pwd
+   31  mkdir /tmp/test
+   32  mkdir /tmp/ansible/playbook
+   33  mkdir /tmp/ansible
+   34  mkdir /tmp/ansible/playbook
+   35  mkdir -p /tmp/chef/recipies
+   36  man mkdir
+   37  pwd
+   38  ls -ltr /tmp/
+   39  cd /tmp/
+   40  ls -ltr
+   41  ls -ltr ansible/
+   42  ls -ltr ansible/playbook/
+   43  ls -lRt ansible/
+   44  tree ansible/
+   45  ls -lRt /tmp/
+   46  ls -ltr /tmp/
+   47  ls -ltr /tmp/ | wc -l
+   48  ls -lRt /tmp/ | wc -l
+   49  wc -l /etc/sudoers
+   50  grep -Ri "devopadmin" *
+   51  grep -in "devopadmin" /etc/sudoers
+   52  grep -in "wheel" /etc/sudoers
+   53  grep -cin "wheel" /etc/sudoers
+   54  grep -in "wheel" /etc/sudoers | wc -l
+   55  grep -il "wheel" *
+   56  grep -in "wheel" /etc/sudoers
+   57  grep -in "wheel | devopadmin" /etc/sudoers
+   58  egrep -in "wheel | devopadmin" /etc/sudoers
+   59  egrep -in "wheel|devopadmin" /etc/sudoers
+   60  history
+   61  alias
+   62  hisotry
+   63  history
+[root@ip-172-31-72-227 tmp]#
+
+
+
+
+
+[root@hostname~]---pwd----/root----e:
+cd 
+cd /tmp/ansible/playbooks---d:
+
+mkdir -p  /tmp/ansible/playbooks/tomcat/
+
+[ec2-user@ip-172-31-72-227 ~]$ sh second.sh
+Sat Jan 20 03:49:05 UTC 2018
+my name is ec2-user
+ this is fourth lines
+[ec2-user@ip-172-31-72-227 ~]$ cat second.sh
+date
+echo "my name is $USER"
+echo " this is fourth lines"
+
+[ec2-user@ip-172-31-72-227 ~]$
+
+rw-rw-r--=664
+
+
+chmod 755 filename
+chmod -R 755 directory
+
+chmod -R 700 directory
+
+rwx-------
+
+
+rwxr-xr-x
+
+
+
+
+devops------>
+
+automation
+
+
+developers---->git---->automation---->deploy ?---->servers-->
+
+update dev----automation
+====================================================
+kfc
+petclinic---->www.petclinic.com
+
+infosys: --- Requirement--->devoperls---->choose language-->design---->package--->.zip .jar .war .ear directory .tar .msi .exe .rpm 
+
+server--hosting company
+=============
+IBM---
+==========
+development----testing---www.petclinicdev.com---(5server)
+staging-----www.petclinicstg.com----(5)
+integration---equal to prod---www.petclinicint.com------inernal users --- education(10 server)
+production--------www.petclinic.com----10 servers(same application)
+============================================
+30servers----->linux------>petclinic--->
+
+
+useradding ----->30 servers--->
+
+
+[serverslist]
+server1
+server2
+server3
+ipaddress
+...etc
+
+
+
+useradd petlicnic
+
+
+user.yml
+name: Create a login user
+     user:
+      name: petclinic
+     groups: # Empty by default, here we give it some groups
+       - docker
+       - sudo
+      state: present
+      shell: /bin/bash       # Defaults to /bin/bash
+      createhome: yes        # Defaults to yes
+      home: /home/petlicinic  # Defaults to /home/<username>
+
+ansbile-playbook user.yml serverlist------------->server4 unable resolve--->
+
+nslookup server4--no hostname
+ping ip
+
+
+
+jenkins--->create--->
+
+
+filetype  --- --- --- 
+
+rw-rw-r--
+--- --- ---
+rwxrwxrwx=777
+
+r=4
+w=2
+x=1 ====7
+
+
+-rw-rw-r--. 1 ec2-user ec2-user  0 Jan 20 03:35 scripts
+-rw-rw-r--. 1 ec2-user ec2-user  0 Jan 20 03:35 restart
+-rw-rw-r--. 1 ec2-user ec2-user  0 Jan 20 03:35 jenkins
+drwxrwxr-x. 2 ec2-user ec2-user  6 Jan 20 03:37 test
+-rw-rw-r--. 1 ec2-user ec2-user 20 Jan 20 03:45 first.sh
+-rw-rw-r--. 1 ec2-user ec2-user 59 Jan 20 03:48 second.sh
+
+
+
+
+chmod 700 *
+
+chmod -R 700 directory
+
+
+chown -R user:group directory
+chown user:group filename
+
+mv-- cut and paste---& rename
+
+/tmp
+/root
+
+mv helloworld /tmp
+
+cp
+
+
+rw-r--r--. 
+
+644---
+r=4
+w=2
+x=1
+
+./=== 7 and sh
+
+
+/opt/automation/scripts
+
+cp source destination
+
+cp -r source destination
+
+scp 
+
+How many ways to install ?
+yum/apt-get
+rpm
+sourcecode
+archive(zip/tar/tar.gz/gz/tgz)
+
+
+yum --------------->/etc/yum.repos.d/*.repo---->base url: --- http://internet/intracnet---->
+
+
+url
+
+
+tar -cvf filename.tar  targetdirectory ------------>to create tar file
+tar -tvf filename.tar  ---->without extract to see tar content
+tar -xvf filename.tar --------> to extract
+c=create
+v=verbose
+f=filename
+
+tar -cvzf filename.tar.gz  targetdirectory ------------>to create tar file
+tar -tvzf filename.tar.gz  ---->without extract to see tar content--------------------->
+tar -xvzf filename.tar.gz --------> to extract------------------>
+z=gzip
+
+
+gunzip --------->filename.gz------->filename
+gzip filename----->filename.gz(it creates existing filename with .gz)
+note:--never ever to gzip existing udpated files
+
+100 tickets----->50--->file system /disc full------>gzip---
+
+filename 5gb->gzip filename------->300MB(log filename)
+
+clear(rm )----->disc full/fs issue--->house keeping--->delete files older than x days-------------->
+
+
+
+
+
+
+
+
+
+
+
+zip
+
+zip -r filename.zip  targetdirectory  ---->to create zip files
+unzip filename.zip ---->to extract unzip
+less filename.zip --without extract to see content inside archive 
+unzip -l filename.zip
+
+
+yum install <package> ----------------installs package
+for ex:
+
+------>/etc/yum.repo.d/*.repo->base url--->http/ftp--->
+yum install nc
+yum install telnet
+yum install zip
+yum install wget
+
+
+wget --->download package in cli
+curl --->to view the page/to download pacakge
+
+
+
+tar - to make compression files with tarball
+
+/opt/apachetomcat.xx
+
+/tmp
+tar -cvzf filena.tar.gz  /opt/apachetomcat--------->filena.tar.gz  ----> opt/apache
+
+
+
+cd /opt
+tar -cvzf /tmp/filena.tar.gz  apachetomcat.xx----------->filena.tar.gz--->apachxxxx
+============================================================================
+
+applications--->to deal business 
+websites--->static/dynamic
+static--->html/css/jquery/images/--------------->webservers--->Apache(http server)/Nginx/IHS/OHS/JWS
+yum install httpd
+
+apache--80
+2.4x---->7
+2.2----->business
+
+
+/etc/httpd------->installation path of apache
+
+[root@ip-172-31-72-227 httpd]# ls -ltr
+total 0
+drwxr-xr-x. 2 root root  82 Jan 21 02:39 conf.d
+drwxr-xr-x. 2 root root 146 Jan 21 02:39 conf.modules.d
+drwxr-xr-x. 2 root root  37 Jan 21 02:39 conf
+lrwxrwxrwx. 1 root root  10 Jan 21 02:39 run -> /run/httpd
+lrwxrwxrwx. 1 root root  29 Jan 21 02:39 modules -> ../../usr/lib64/httpd/modules
+lrwxrwxrwx. 1 root root  19 Jan 21 02:39 logs -> ../../var/log/httpd
+[root@ip-172-31-72-227 httpd]# pwd
+/etc/httpd
+[root@ip-172-31-72-227 httpd]#
+
+
+redhatpage----------------->default page-----------deveoploer------->/var/www/html/---------------
+
+saggi.awsmiddleware.in----------------->dns--->ip-->80--->ip
+
+
+DNS---www.saggisolutionstechs.com --- ip
+
+ec2-public--52.x.x.x.
+
+
+
+
+
+
+
+																
+saggi.awsmiddleware.in -------------->DNS---->IP
+
+protocal://<wesitename>:<port>
+saggi.awsmiddleware.in
+
+protocal:http
+websitename: saggi.awsmiddleware.in--->dns-->52.x.x.x
+port:80
+
+
+ec2---->80---->Apache---->/var/www/html/index.html---------------
+
+
+
+Developers(10)--->html----->source code--->saving at location----->source code repository
+
+developers----->svn/cvs/github/temcity/ibm------>package-->zip----->download--->unzip---->cp paste--->
+
+/opt/automation/scripts/websitebuilder.sh
+
+
+#!/bin/bash
+unzip *.zip
+cd CookingSchool-FreeHtmlPageTemplate/
+cp -r * /var/www/html/
+
+
+packagte-->/home/ec2-user------>/tmp/websites--->extract---->/var/www/html/
+================================================================
+[root@ip-172-31-72-227 scripts]# cat staticdeploy.sh
+#!/bin/bash
+#Author:Name
+#Version:1.0
+#Purpose: Deployment
+cp /home/ec2-user/Coo* /tmp/websites/
+sleep 2
+cd /tmp/websites/
+unzip *.zip
+cd CookingSchool-FreeHtmlPageTemplate/
+cp -r * /var/www/html/
+===================================================================
+
+saggi.awsmiddleware.in---------->znetdns--->ip----->80------ec2--->apache----->/var/www/html/inde.html-----
+
+
+
+developers----->Source code reposity---->package--->zip---->url--->deployed--->websites---
+
+jenkins---->one click--->
+
+=================================
+
+/opt/automation/scripts/apache/
+
+stopapache.sh
+#!/bin/bash
+#stopping apache
+systemctl stop httpd
+---------------------------------
+startapache.sh
+#!/bin/bash
+#starting apache
+systemctl start httpd
+--------------------------------
+restartapache.sh
+#!/bin/bash
+#stopping apache
+systemctl stop httpd
+wait 2
+systemctl start httpd
+========================
+restartapache.sh
+
+#!/bin/bash
+#stopping apache
+/opt/automation/scripts/apache/stopaapche.sh
+wait 2
+#starting 
+/opt/automation/scripts/apache/startapache.sh
+
+
+
+==================================
+
+/opt/automation/scripts/apache/restartapache.sh
+
+
+.bashrc or .bashprofile
+
+alias restartapche=/opt/automation/scripts/apache/restartapache.sh
+
+
+restartapache
+
+Commands Reference:-
+https://www.thegeekstuff.com/2010/11/50-linux-commands/?utm_source=feedburner
+https://www.webair.com/community/top-50-linux-commands/
+https://www.tecmint.com/18-tar-command-examples-in-linux/
+https://www.tecmint.com/20-linux-yum-yellowdog-updater-modified-commands-for-package-mangement/
+https://www.cyberciti.biz/faq/star-stop-restart-apache2-webserver/
+
+Shell Scripting:
+http://www.techpaste.com/2012/04/shell-script-stop-start-apache-web-server-linux/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+																
+																
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
