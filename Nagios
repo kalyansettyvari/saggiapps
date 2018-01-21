@@ -1,0 +1,83 @@
+   1  yumupdate -y
+    2  yum update -y
+    3  ls
+    4  rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    5  yum install -y nrpe nagios-plugins-all
+    6  vi /etc/nagios/nrpe.cfg
+    7  systemctl start nrpe
+    8  systemctl enable nrpe
+    9  hostname
+   10  /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+   11  hostname
+   12  ls
+   13  yum install java -y
+   14  wget http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.2/bin/apache-tomcat-9.0.2-windows-x64.zip
+   15  yum install wget -y
+   16  wget http://www-eu.apache.org/dist/tomcat/tomcat-9/v9.0.2/bin/apache-tomcat-9.0.2-windows-x64.zip
+   17  ps -ef | grep -i nagios
+   18  vi /etc/hosts
+   19  vi /etc/nagios/nrpe.cfg
+   20  systemctl start nrpe
+   21  systemctl enable nrpe
+   22  vi /etc/services
+   23  cd /etc/nagios/
+   24  ls
+   25  netstat -at | grep nrpe
+   26  service xinetd restart
+   27  /usr/local/nagios/libexec/check_nrpe -H localhost
+   28  yum install -y gcc glibc glibc-common gd gd-devel make net-snmp openssl-devel
+   29  useradd nagios
+   30  passwd nagios
+   32  mkdir /root/nagios
+   33  cd /root/nagios
+   34  wget https://www.nagios-plugins.org/download/nagios-plugins-2.1.2.tar.gz
+   35  tar -xvf nagios-plugins-2.1.2.tar.gz
+   36  cd nagios-plugins-2.1.2
+   37  ./configure
+   38  make
+   39  make install
+   40  yum install xinetd -y
+   41  cd /root/nagios
+   42  wget http://liquidtelecom.dl.sourceforge.net/project/nagios/nrpe-3.x/nrpe-3.0.tar.gz
+   43  vi /etc/ssh/sshd_config
+   44  service sshd restart
+   45  passwd
+   46  cd
+   47  ls -ltr
+   48  mv nrpe-3.2.1.tar.gz nagios/
+   49  cd nagios/
+   50  ls -ltr
+   51  tar -xvzf nrpe-3.2.1.tar.gz
+   52  ls -ltt
+   53  cd nrpe-3.2.1
+   54  ./configure
+   55  make all
+   56  make install-plugin
+   57  make install-daemon
+   58  make install-daemon-config
+   59  make install-xinetd
+   60  make install-inetd
+   61  vi /etc/xinetd.d/nrp
+   62  cd /etc/xinetd.
+   63  cd /etc/xinetd.d/
+   64  ls -ltr
+   65  pwd
+   66  vi /etc/xinetd.d/nrep
+   67  more nrpe
+   68  rm -rf nrp
+   69  ls -ltr
+   70  vi nrpe
+   71  vi /etc/services
+   72  service xinetd restart
+   73  netstat -at | grep nrpe
+   74  netstat -anlp | grep nrpe
+   75  ps -ef | grep 19831
+   76  date
+   77  /usr/local/nagios/libexec/check_nrpe -H localhost
+   78  service nagios restart
+   79  vi nrpe
+   80  history
+[root@ip-172-31-26-169 xinetd.d]# vi /etc/hosts
+[root@ip-172-31-26-169 xinetd.d]# /usr/local/nagios/libexec/check_nrpe -H localhost
+NRPE v3.2.0
+[root@ip-172-31-26-169 xinetd.d]#
