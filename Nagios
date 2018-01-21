@@ -68,6 +68,7 @@
    69  ls -ltr
    70  vi nrpe
    71  vi /etc/services
+   nrpe            5666/tcp                 NRPE
    72  service xinetd restart
    73  netstat -at | grep nrpe
    74  netstat -anlp | grep nrpe
