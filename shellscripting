@@ -1,0 +1,42 @@
+/opt/automation/scripts/apache/
+
+stopapache.sh
+#!/bin/bash
+#stopping apache
+systemctl stop httpd
+---------------------------------
+startapache.sh
+#!/bin/bash
+#starting apache
+systemctl start httpd
+--------------------------------
+restartapache.sh
+#!/bin/bash
+#stopping apache
+systemctl stop httpd
+wait 2
+systemctl start httpd
+========================
+restartapache.sh
+
+#!/bin/bash
+#stopping apache
+/opt/automation/scripts/apache/stopaapche.sh
+wait 2
+#starting 
+/opt/automation/scripts/apache/startapache.sh
+
+
+========================================================
+
+ cat staticdeploy.sh
+#!/bin/bash
+#Author:Name
+#Version:1.0
+#Purpose: Deployment
+cp /home/ec2-user/Coo* /tmp/websites/
+sleep 2
+cd /tmp/websites/
+unzip *.zip
+cd CookingSchool-FreeHtmlPageTemplate/
+cp -r * /var/www/html/
