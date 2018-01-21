@@ -1,0 +1,129 @@
+ 2  rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    3  yum install -y nrpe nagios-plugins-all
+    4  vi /etc/nagios/nrpe.cfg
+    5  systemctl start nrpe
+    6  systemctl enable nrpe
+    7  hostname
+    8  vi vi /etc/nagios/nrpe.cfg
+    9  vi /etc/nagios/nrpe.cfg
+   10  /usr/lib64/nagios/plugins/check_root
+   11  /usr/lib64/nagios/plugins/check_swap
+   12  systemctl start nrpe
+   13  systemctl enable nrpe
+   14  tee /etc/yum.repos.d/docker.repo <<-'EOF'
+   15  [dockerrepo]
+   16  name=Docker Repository
+   17  baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+   18  enabled=1
+   19  gpgcheck=1
+   20  gpgkey=https://yum.dockerproject.org/gpg
+   21  EOF
+   22  yum install docker-engine
+   23  vi /etc/nagios/nrpe.cfg
+   24  systemctl start nrpe
+   25  free -m
+   26  vi /etc/nagios/nrpe.cfg
+   27  systemctl start nrpe
+   28  yum install httpd -y
+   29  yum install java* -y
+   30  yum install httpd -y
+   31  systemctl httpd start
+   32  systemctl start httpd
+   33  ps -ef|grep apache
+   34  ps -ef|grep httpd
+   35  cd /usr/lib64/nagios/plugins/
+   36  ls
+   37  vi check_apache
+   38  ps -ef|grep -v grep|grep $service|grep root|wc -l
+   39  vi check_apache
+   40  ps -ef|grep -v grep|grep $httpd|grep root|wc -l
+   41  ps -ef|grep -v grep|grep httpd|grep root|wc -l
+   42  vi /etc/nagios/nrpe.cfg
+   43  systemctl start httpd
+   44  systemctl start nrpe
+   45  yum install nagios-plugin-nrpe
+   46  service nagios restart
+   47  vi /etc/nagios/nrpe.cfg
+   48  service nagios restart
+   49  systemctl start nrpe
+   50  docker --version
+   51  docker search nginx
+   52  docker search inginx
+   53  cd
+   54  docker --version
+   55  systemctl enable docker.service
+   56  systemctl start docker
+   57  docker search nginx
+   58  docker pull nginx
+   59  docker run -itd nginx
+   60  ls
+   61  hostname
+   62  vi /etc/nagios/nrpe.cfg
+   63  cd  /usr/local/nagios/libexec/
+   64  cd /usr/lib64/nagios/
+   65  ls
+   66  cd plugins/
+   67  ls
+   68  vi check_container
+   69  ls
+   70  systemctl start nrpe
+   71  ps -ef | grep -i nagios
+   72  vi /etc/hosts
+   73  vi /usr/local/nagios/etc/servers/client.itzgeek.local.cfg
+   74  hostname
+   75  ls
+   76  vi /etc/nagios/nrpe.cfg
+   77  systemctl start nrpe
+   78  cd /etc/nagios/
+   79  ls
+   80  ps -ef | grep nagios
+   81  yum install -y gcc glibc glibc-common gd gd-devel make net-snmp openssl-devel
+   82  useradd nagios
+   83   passwd nagios
+   84  mkdir /root/nagios
+   85  cd /root/nagios
+   86  wget https://www.nagios-plugins.org/download/nagios-plugins-2.1.2.tar.gz
+   87  yum install wget
+   88  wget https://www.nagios-plugins.org/download/nagios-plugins-2.1.2.tar.gz
+   89  tar -xvf nagios-plugins-2.1.2.tar.gz
+   90  cd nagios-plugins-2.1.2
+   91  ./configure
+   92  make
+   93  make install
+   94   yum install xinetd
+   95  vi /etc/ssh/sshd_config
+   96  service sshd restart
+   97  vi /etc/hosts
+   98  ps -ef | grep nagios
+   99  systemctl stop nagios
+  100  systemctl stop nrpe
+  101  ps -ef | grep nagios
+  102  systemctl start nrpe
+  103  ps -ef | grep nagios
+  104  ping www.google.com
+  105  service sshd restart
+  106  passwd
+  107  cd
+  108  ls -ltr
+  109  tar -xvzpf nrpe-3.2.1.tar.gz
+  110  ls -ltr
+  111  cd nrpe-3.2.1
+  112  ls -ltr
+  113  ./configure
+  114  make all
+  115  make install-plugin
+  116   Nagios group: nagios
+  117  make install-daemon
+  118  make install-daemon-config
+  119  make install-inetd
+  120  vi /etc/xinetd.d/nrpe
+  121  vi /etc/xinetd.d/nrep
+  122  vi /etc/services
+  123  make install-inetd
+  124  vi /etc/xinetd.d/nrpe
+  125  /usr/local/nagios/libexec/check_nrpe -H localhost
+  126  service xinetd restart
+  127  service nagios restart
+  128  service nrpe restart
+  129  service nrpe stop
+  130  history
