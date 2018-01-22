@@ -1,0 +1,165 @@
+
+
+client----->webserver------->app severs---->DB servers(oracle/mysql/sql sever/db2/mongodb/redshift..etc)
+
+client----->webservers(public network)DMZ---->business logic running server(PRIVATE NETWORK)
+
+security
+no need to put port number
+static content--same page--->www.gmail.com---->login page---credetntials--->
+load balancing--s/w lb
+
+Apache Software Foundation---ASF---->OpenSource----->software---------->customize--->commercial
+
+2.4--latest
+2.2--->still in use
+
+Apache-->
+--->nginx , ihs, ohs, jws , 
+
+OpenSource
+StaticConent---webserver-------
+LAMP----linux,mysql,apache,php------>Wordpress,drupal,typo3,magento....etc
+WAMP--Windows,"
+
+no java
+no .net
+
+php---static--->apache
+blogs--facebook--->lamp
+Custom Error page---404---HTTP Status codes---200
+200 success
+300-redirection with sucess/cache
+400- resource issue--file not found,403,401,
+500--server related issues
+501,502,503
+
+
+
+18.221.85.255----->ec2---->/var/www/html------>gangi.html-----
+
+
+client---->apache---->mysql---lamp/wamp
+client---->apache---->Tomcat/websphere/weblogic/glashfish(java based applications---->DB
+
+shell
+
+pgming laungauge--->runtimeplaform
+.net---->IIS------Windows------------>power shell 
+java---->tomcat/weblogic/websphere/glashfish
+static code---->apache/nginx/iis
+php--------->Apache
+SAP ABAP------>SAP Basis server
+c/c++-------------->mainframe
+
+
+no iis in linux
+iis only runs in windows servers
+
+stop/start/deployment--->power shell--->reports
+
+Apache-----
+Installation ways
+Windows--->msi--->next ---next
+binary/zip--->extract --->use
+
+Unix
+------------
+yum--------->public/private---->/etc/yum.repos.d/*.repo---->base url /mirror list
+source code(c/c++)----->compile(c compiler---gcc)---->build---->apache
+rpm
+
+
+yum and rpm ?
+
+
+#!/bin/bash
+#Author:
+#Version:
+echo "i am installing basic packages"
+yum install bind-utils unzip wget telnet nc -y
+
+
+To install apache with  yum 
+
+yum install httpd -y
+
+
+/etc/httpd---->server location--serverroot
+httpd.conf---->conf
+conf.d--->.conf
+logs--->access.log and error.log
+modules--->import/include
+
+conf.d
+conf.modules.d
+logs -> ../../var/log/httpd
+conf
+/run/httpd
+modules -> ../../usr/lib64/httpd/modules
+
+conf------------>httpd.conf
+updating/modifying httpd.conf--->restart of apache
+
+more or less(interactive)
+
+
+httpd.conf(Directives/tags)
+==========================
+key= value(only value)
+
+ServerRoot "/etc/httpd"---------------->Apache Installation location
+
+Listen 80------------------------------>Apache running port number
+
+Include --------->
+User apache----------------->Apache process owner
+Group apache---------------->apache process group
+ServerAdmin root@localhost------------>SystemAdmin email
+ServerName <websitename>------------->websitename
+
+
+Permissions purpose
+<Directory />
+AllowOverride none
+Require all denied
+</Directory>
+
+
+
+DocumentRoot "/var/www/html"----------->website content location
+ 
+ 
+<Directory "/var/www/html">
+Options Indexes FollowSymLinks
+AllowOverride None
+</Directory>
+
+
+<IfModule dir_module>
+ DirectoryIndex home.html--------------->from many files--->pick single file
+</IfModule>
+
+
+DocumentRoot---->which one i have to show as home page---DirectoryIndex
+
+
+
+Apache--LAB-1
+============================================================
+Change port number in httpd.conf---->Listen 100
+Change your website location ---->/opt/website/
+/var/www/html----------------->/opt/website/
+
+httpd.conf---->/var/www/html------------>/opt/website/
+
+/opt/website--->index.html-----rename----->login.html
+
+DirectoryIndex login.html
+
+------>Restart apache--->Test page---ip:100
+Rule-->100
+
+Listen & DocuementRoot & DirectoryIndex------------>tags
+==================================================================
+
