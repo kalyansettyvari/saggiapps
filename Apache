@@ -162,4 +162,341 @@ Rule-->100
 
 Listen & DocuementRoot & DirectoryIndex------------>tags
 ==================================================================
+==================================================================
+
+httpd.conf----->/etc/httpd/conf/httpd.conf-----any errors
+
+stop/start---
+
+syntax--->ok--->stop
+
+
+pem file
+ec2 machine--ip or name
+18.221.85.255
+
+===========================================================================
+
+Lab: login with other user(sudoer)
+ec2-user---------------->sudo su - root--->awsadmin--->sudoer
+
+/etc/ssh/sshd_config----->PasswordAuthentication no ----->PasswordAuthentication yes
+username:
+password:
+
+ec2-user:
+password=key file
+
+one user---->awsadmin
+password:12345
+
+ec2---->awsadmin-------->sudoer--------------->/etc/sudoers
+paswword:12345
+
+userid : awsadmin
+sudoer
+password
+/etc/ssh/sshd_config----->PasswordAuthentication no ----->PasswordAuthentication yes
+esc---->:%s/PasswordAuthentication no/PasswordAuthentication yes/g
+service sshd restart
+sed--->
+awk
+=======================================================================================
+
+/
+bin
+bash
+
+grep -iRl "listen" *---------->it searches 
+grep -il "listen" * ----100 files---2 files--->
+
+grep -- to search a string/keyword/numbers
+grep -i--ignore case
+grep -l ---list only files
+grep -c --count
+grep -n---number line
+grep -R ---Recursive
+
+
+/opt/apache---->awsadmin:awsadmin
+=================================================
+/usr/sbin/apachectl -t ----------->syntax check
+systemctl status httpd.service
+
+
+stop
+systemctl stop httpd
+/apache/bin/apachectl -k stop
+start
+systemctl start httpd
+/apache/bin/apachectl -k start
+
+/apache/bin/apachectl -t       
+
+/apache/bin/apachectl -v
+/apache/bin/apachectl -S --- to know hwo many websites are running from apache
+
+
+
+Tunneling---------->bypass---------->ec2
+
+browser---->my windows---->localhost--->127.0.0.1(windows)---100----putty---tunneling
+localhost------------
+========================
+Selinux---security
+getenforce--enabled
+setenforce 0------>permissve
+====================================================
+
+curl website
+curl ip
+
+curl localhost
+curl 127.0.0.1 
+
+==========================================================
+
+conf/httpd.conf----
+Listen
+DocumentRoot
+ServerName
+DirectoryIndex
+ServerAdmin
+<Directory>
+Permissons
+
+</Directory>
+
+
+Virtualhosting--running websites
+
+VirtualHosting---2 types
+1)ip based---1 ip --- 1 website
+2)Name based--1 ip -- many websites
+
+
+NameVirtualHost *:80
+
+www.test.com----->DNS---->ip---->ec2--->www.test.com---->DocumentRoot-->home.html
+
+<VirtualHost ip:80>
+ServerName www.test.com
+DocumentRoot /opt/website/test
+DirectoryIndex home.html
+<Directory /opt/website/test>
+Allow from all
+</Directory>
+</VirtualHost>
+
+
+<VirtualHost *:80>
+ServerName www.xyz.com
+DocumentRoot /opt/website/xyz
+DirectoryIndex index.html
+<Directory /opt/website/xyz>
+Allow from all
+</Directory>
+</VirtualHost>
+
+
+
+Directory structure of the apache
+conf/httpd.conf
+logs/access.log(user hits and error.log(error info and restart apache)
+
+
+*/gangi.html----------->DocumentRoot/gangi.html--->404
+
+http status code
+
+splunk---->
+
+
+onpremises--->aws
+
+
+
+conf
+logs/access.log and error.log
+
+
+/opt/website1----tail -f access.log
+
+/opt/website2----ta
+/opt/website3
+
+
+DocuementRoot /opt/website1 /opt/website2
+
+DirectoryIndex index.html login.html
+
+=================================================
+
+more
+less
+vi --- how to replace keyword
+curl
+tail -f 
+
+netstat -anlp | grep ":8080" 
+all
+n=numeric
+l=list
+p=pid
+
+awk
+sed
+
+
+
+================================================
+
+
+bind error------------>socket(port) not binding
+
+54.174.86.61
+18.218.177.208
+18.218.204.24
+54.90.73.75        - 
+
+
+pinging multiple machines
+
+
+
+#!/bin/bash
+#purpose:ping test for many servers
+#Version:1.0
+source=/opt/automation/scripts/
+servers=$source/serverslist
+tempfile=$source/pingresult
+for i in `cat $servers` ;
+do
+echo "===================================" >>$tempfile
+echo "server name $i" >>$tempfile
+ping -c 4 $i >>$tempfile
+echo "===================================" >>$tempfile
+done
+
+
+
+=============================
+server name 18.218.177.208
+
+
+#!/bin/bash
+#purpose:ping test for many servers
+#Version:1.0
+source=/opt/automation/scripts/
+servers=$source/serverslist
+tempfile=$source/pingresult
+for i in `cat $servers` ;
+do
+echo "===================================" >>$tempfile
+echo "server name $i" >>$tempfile
+nc -v 4 $i >>$tempfile
+echo "===================================" >>$tempfile
+done
+
+
+<Files ".ht*">-----------Each directory level permissions if want (.htaccess)---php
+    Require all denied----------->403
+</Files>
+
+/opt/test/--DR
+DI--login.html
+
+www.google.com---------------->/opt/test/login.html
+www.google.com/admin/admin.html---403
+
+
+/opt/test/admin/
+.htaccess(Require all denied)
+admin.html
+
+
+ServerRoot---->/etc/httpd
+
+ErrorLog "/opt/logs/httpd/my-error_log"
+CustomLog "/opt/logs/httpd/my-access_log" common
+
+
+
+
+LogFormat "%h ......"
+
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+LogFormat "%h %l %u %t \"%r\" %>s %b" common
+LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+
+%h--- client ip--host ip/
+%l -- -
+%u -- - 
+%t--- time
+%r -- requst type (GET/POST)
+%>s--- http status code( 20x,30x,40x,50x)
+%b-- bytes of information transfer to the code
+
+awk {print $1,$6} access.log | grep -w "500"---->ip
+cut 
+
+ source .bashrc---------------->Alias test
+ 
+
+
+
+public ?
+
+error.log ( stop /start/40x/50x)
+
+
+
+
+
+
+
+
+
+===============================
+Listen
+DirectoryIndex
+DocuementRoot
+LogFormat
+ErrorLog
+CustomLog
+Directory
+ServerName
+ServerAdmin
+
+
+ln -s /etc/httpd /opt/apachehome(softlink and hardlink)
+
+lrwxrwxrwx ---- /opt/apachehome------------>/etc/httpd
+ServerRoot /opt/apachehome
+===========================================
+
+Client------------->apache----------->app se
+
+
+What are the log level available in Apache?
+The default configuration is set to “warn” however, the following is possible too.
+
+debug
+info
+warn
+notice
+crit
+alarm
+emerg
+error
+
+Apache---- Nginx,OHS,IHS,JWS
+https://geekflare.com/apache-interview-questions-answers/
+
+
+LAB:-
+/opt/logs/httpd/
+
+30- times--refresh--200 count ?
+
 
