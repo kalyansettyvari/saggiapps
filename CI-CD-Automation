@@ -1,0 +1,67 @@
+smoke tests--QA tests---->
+
+CI--- test cases (unit test cases) will be run--->package
+
+CI-----grouping the code of --->make a package--->delivery---->deployment---
+CD--delivery----package ready---stored at one location----artifactory
+
+source code repository----github---integration---build --->package(zip/tar/tar/gz/tgz/war/ear/jar/msi/rpm...etc)
+
+packages stored at one location--->artifactory(delivery storage location)----ready for delivery-----?deployment---
+
+cD
+
+Agile--->quick possible solutions
+==============================
+Scrum calls----scrum master---->
+Sprint call meeting--->release--->2 weeks---->jira tickets---->how many days / time
+ITIL--->
+jira---2 weeks--->
+website---static pages
+1 page---->local system---->Dev environemnt--- basic functionality
+2 page---->local system---->Dev environemnt--- basic functionality
+
+CI tool -- Jenkins
+Developers------------>Source Code Repository------------>pacakge------------>artifactory------------->deployment---->linux
+
+what is CI ?
+what is CD ?
+
+
+production
+
+
+CD---deployment---
+
+20 - ppl
+
+50----------github--------integration
+50---------github------------integration
+50---------github------------integration----zip-----app.zip------deployment---apache
+
+
+
+
+developer----->html/php----->source code---->package---->zip
+
+
+Github----project--mystaticcode--100 pages
+
+dev-1---30 pages---unit cases----------mystaticcode---100 pages--->integration( test cases)--->package--->
+
+dev-2--30 pages------unit--------mystaticcode
+
+dev-3---40 pages------unit-------mystaticcode
+
+
+junit test cases
+QA testing
+
+
+mystaticcode
+===========
+Dev-- 2 ec2-- apaache--docuemntroot--->tester/devlopment----functionality---
+pre-prod---2 ec2 machines----->documentroot --->tester(perfromace testing)---->relase
+
+Prod----4 ec2 machines---apache --Docuemntroot---->end user
+
