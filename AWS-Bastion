@@ -1,0 +1,71 @@
+cloud:
+ssh -i <pemfile> user@<remote hostname/ remote ip>------------->username
+
+currently logged in ec2-user
+ec2-user : ssh -i <remoteserverpem>.pem ip/dns
+
+current user: awsadmin
+remote server/user=ec2-user
+
+ssh -i <pem>.pem ec2-user@prasad-ec2-ip/dns
+
+current user: awsadmin
+
+remote user: root
+
+ssh root@remoteserverip/dns------------->root
+
+whoami--->root
+
+/etc/sudoers
+
+/etc/sudo.conf----------->no
+=============================
+
+system admin------------>linux ec2------------------->linux ec2-----------------(2)
+bastion
+ssh 22 anywhere
+web-dmz-linux
+ssh 22 bastion
+http 80 anywhere
+
+
+system admin(rdp)--3389------------->windows ec2------------------>linux ec2(2)
+bastion-rdp
+rdp	3389	anywhere
+
+windows-dmz-linux
+ssh 22 bastion-rdp
+http	80 anywhere
+
+
+run--->mstsc--->rdp/mstsc wizard--->
+ec2--GEt the password -by laoding pem file
+Public DNS	ec2-54-205-49-108.compute-1.amazonaws.com
+User name	Administrator
+Password	
+bvGMab3V@5kx.XkwlVUZ-3N8VTJw5Hx;
+
+====================================================================================
+System admin --------------->Windows ec2 ---------------->windows ec2(2)
+bastion-windows
+rdp 3389 anywhere
+
+dmz-windows
+rdp 3389  bastion-windows
+http 80 anywhere
+=================================
+https://archive.apache.org/dist/httpd/binaries/win32/
+
+httpd-2.2.25-win32-x86-openssl-0.9.8y.msi 
+
+
+=======================================================================
+lab:-
+5 ppl
+winows--- apache
+localhost
+
+how to open firewall
+
+jump server
