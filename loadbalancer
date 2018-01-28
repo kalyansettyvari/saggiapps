@@ -1,0 +1,100 @@
+=======================================================================
+lab:
+scp -- 22 servers
+
+server1---awsadmin
+
+/opt/test-101
+
+scp -r /opt/test awsadmin@server2:/tmp
+
+scp <source> user@<destionationserver>:<destionationpath>
+rsynch <source> <destionaserver>:destionationpath
+
+================================================================
+lab:
+dns names--public/private
+
+dns(Godaddy/Znetlive/BigRock)-----Route53------->ip -- name
+
+/etc/hosts---->C:\Windows\System32\drivers\etc
+privateip server2
+
+
+ssh server2
+====================================================================
+lab:
+SSH password less login
+server1:username--->awsadmin
+
+ssh server2--->password(wihout password login to machine)
+
+server2:username----->awsadmin
+
+1)create ssh key ( ssh-keygen)---server1-- user------/home/<user>/.ssh/rsa_pub,<privatekeyname>..
+2)copy the public file to remote server -- server2---user----/home/<user>/.ssh/authrized_keys
+scp
+ssh-copy-id
+manual copy
+
+3)ssh test
+
+
+combo of commands---->shellscript
+==============================================================================
+browser---->aws console---->aws az----->region---->credetials---username/password
+aws cli(any OS)---->aws az---->region--------------------->access key/secret key 
+
+aws ec2 create insance <instnacename> <....>
+
+aws cli commands file---->combo----Cloudformation script
+
+Cloudformation--->resources--->services
+
+ec2(stop/start)
+security group
+cloudtrail
+====================================
+lab:- AWS Cli login/Creating Access and secret key
+Access Key ID:
+AKIAJYC7UXAB54E5TSBA
+Secret Access Key:
+V3rw3n0zKEYW4+kG0RUv08ej4wG4X6EYFbu7YcOh
+
+IAM---->security-->console/users/keys/secrets
+
+aws console-->no need to have gmail username and pasword--->aws
+facebook id-------identy provider----->aws console--fb
+ldap -----idp-----aws console---->our ldap--------->ldap credentials
+
+
+aws <resourcename> <syntax>
+
+>aws ec2 describe-instances
+
+====================================================
+
+lab: upload your own key
+=============================================
+lab:-
+1-bastion
+1-lb
+2-apache
+3--sg
+load balancer--->failover/high-availability/load balance/scaling(up/down
+
+#!/bin/bash
+yum install nc httpd nslookup unzip wget -y 
+sleep 5
+systemctl start httpd
+echo "i am first webserver" >>/var/www/index.html
+
+useradd awsadmin
+
+lab:bootup script
+#!/bin/bash
+yum install httpd -y
+sleep 2 
+systemctl start httpd
+echo "this is first server" >>/var/www/html/index.html
+curl localhost
