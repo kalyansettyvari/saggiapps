@@ -65,3 +65,93 @@ pre-prod---2 ec2 machines----->documentroot --->tester(perfromace testing)---->r
 
 Prod----4 ec2 machines---apache --Docuemntroot---->end user
 
+======================================================================
+Date:29/1/18
+keywords:splunk/ssh login
+
+ /opt/acces_log
+ 
+ grep -w "500" /opt/access_log 
+ 
+ awk '{print $7}' /opt/access_log | grep -w 500 | wc -l
+ 
+ source="access.log" host="sample3" index="sample3" sourcetype="access_combined_wcookie"
+ 
+ alert ---
+ dashboards(1=h/1d/1week)
+ =========================
+ 
+ crontab 
+ 
+ 
+ 
+pushing---------->github--------------job----------------success/failure--->
+
+/opt/sf/system/xxxxxxx
+SplunkForwarder---->output.conf
+
+splunkmaster=ip
+
+
+input.conf
+source=/var/log/httpd/access_log
+source=/opt/tomcat/logs/catalina.outbound
+index="newserver"
+
+lab:--- forwarding my apps logs into splunk----
+=========================================================================
+iis - windows servers
+
+webservers
+nginx
+apache
+ihs
+ohs
+jws
+===============================================================
+ 2  ls -ltr
+    3  vi authorized_keys
+    4  ls -ltr
+    5  exit
+    6  cd .ssh/
+    7  ls -ltr
+    8  ls -l authorized_keys
+    9  chmod 400 authorized_keys
+   10  exit
+   11  tail -50 /var/log/secure
+   12  sudo tail -50 /var/log/secure
+   13  history
+[awsadmin@ip-172-31-67-11 ~]$ exit
+logout
+Connection to server1 closed.
+[awsadmin@ip-172-31-69-2 .ssh]$ history
+    1  exit
+    2  ssh server1
+    3  ls -ltra .ssh/
+    4  cd .ssh/
+    5  cat authorized_keys
+    6  ls -ltr
+    7  ssh-keygen
+    8  ls -ltr
+    9  cat id_rsa.pub
+   10  ssh server1
+   11  history
+   ssh-copyid ---->
+   
+===========================================
+jenkins(id_rsa.pub)
+
+
+15 servers---->
+
+useradd awsadmin
+/home/awsadmin/.ssh/authrized_keys
+
+=============================================
+/var/log/secure
+
+
+
+ 
+ 
+
