@@ -150,6 +150,77 @@ useradd awsadmin
 =============================================
 /var/log/secure
 
+===================================================================
+aws infra----console
+aws infra-aws cli-----commands/cloudformation(json/cf)
+aws infra---software-- software defined network / software defined computing/
+
+Infra mgmt tools---->IAAC--->infra as a code--->provison= creating
+resource/service--->ec2, security group
+
+pem
+access key and secret key---->pgmtic authenticationr
+authorization--->IAM---role
+
+IAAC---->AWS-- Cloudformation- aws
+packer----->binary--->extract
+spinnaker--Gui tool--CICD- Infra
+teraform---->binary--->extact
+
+
+ec2 instace--->yum --->httpd---ami
+
+ec2 template--->requred s/w--------->ami--- base ami
+
+client--->dns name--->alb end point url----->webserver----->mysql
+
+alb---->target group---->instances
+
+
+===============================================================================================
+
+
+a/c--a-ec2---a.pem----user=awsadmin
+
+ssh awsadmin@server
+
+unable to connect ip ?
+
+ping  --------
+
+allow ping packet
+
+
+
+
+a/c--b-ec2---b.pem-----
+/etc/hosts--->a pvt
+user:awsadmin
+
+
+ssh --->a-ec2-ec2-user----->jump----->b----->exit--->a-ec2-ec2-user-----whoami------su - awsadmin-->awsadmin
+
+a----> ssh awsadmin@priavate-----?
+
+ssh -i b.pem b-ec2-pubip
+
+a/c---mumbai
+
+a/c---virginia
+100 accounts---->
+internet-------->vpn------company------->network -------->aws(100)
+
+Blue/Green deployment
+dev---->source code repo---->zip---->
+Green- create -2 instances--/var/www/html/index.php image.php-- Success
+Blue- destroy--2 instances
+
+aws environment-2 servers
+
+2--index.php,image.php
+dev---->push---->github(save)---------------->automatillcay---BLue/green deployment--->
+
+
 
 
  
