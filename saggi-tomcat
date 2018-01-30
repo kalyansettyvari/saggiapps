@@ -1,0 +1,55 @@
+JAVA----->Runtime environment---->Container---->
+Servelet Container
+Ejb Container
+Portlet Container
+
+WAR-- web archive
+JAR- JAVA--- combo of java classes
+EAR-- Enterprise archive
+
+
+Apache Tomcat--- Servelet Container--No EJB--- Web server/JAVA based web server---- WAR files(JAR)--No EAR
+Weblogic/Websphere/Jboss/Glashfish--- Application SErvers(100% containers)---WAR/EAR(JAR)
+
+Installation-Pre-req(dependencies)
+Configuration
+stop/start
+Log files
+customze
+deployment
+upgradation
+
+
+yum install httpd------>
+What is diff b/w rpm and yum ?
+what is bind exception ?
+
+
+ApacheTomcat
+
+Vendor: ASF
+Version: 9.x (8/7/6)
+Protocals: http/https/ajp
+port: http=8080 , https=8443,ajp=8009
+Instalaltion OS: All OS
+Types: msi/exe installaer----Windows
+		unix-- yum ,zip,rpm-----------prefered one is zip
+		
+Pre-req- java(jdk/jre)---jre---->jdk---
+	installation - yum (apt-get), rpm, zip --unix--
+					exe - windows
+
+/opt and /usr
+
+/tomcat
+
+
+java -version---SUN java-- oracle
+Sun java
+
+oracle - oracle java ( weblogic- jrocket)
+ibm - ibm java ( all ibm prod)
+mac -- apple java 
+redhat - openjdk
+
+
