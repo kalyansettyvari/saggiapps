@@ -38,6 +38,19 @@ Types: msi/exe installaer----Windows
 Pre-req- java(jdk/jre)---jre---->jdk---
 	installation - yum (apt-get), rpm, zip --unix--
 					exe - windows
+					
+Type: Webconainer/Servlet Container
+imp-cfg - file ---server.xml
+
+apache    tomcat
+htdocs---webapps
+httpd.conf  tomcathome/conf/server.xml(8080/8009/8443)
+<tomcathome>/bin/startup.sh
+<tomcathome>/bin/shutdown.sh
+
+Log: logs/catalina.out
+
+
 
 /opt and /usr
 
@@ -51,5 +64,269 @@ oracle - oracle java ( weblogic- jrocket)
 ibm - ibm java ( all ibm prod)
 mac -- apple java 
 redhat - openjdk
+
+
+
+
+WAR- Filel - Building/EAR- file/ JAR
+======================================
+
+github---->source code---->build the code----->WAR/EAR/JAR/tgz/tar/zip----->Deployment
+
+
+sprint-->helloworld--->10 pages 
+
+continuisoly develop---save--->1 page---->code repo---->build war ----->first.war--->artifacts/delivery/target---->repo--->nexus/jfrog
+continuisoly develop---save--->2 page---->code repo---->build war ----->second.war--->artifacts/delivery/target---->repo--->nexus/jfrog
+http://<nexusurl/first.war
+
+build--->ant/maven/graddle
+
+
+code repo---->2 pages---->
+
+git hub --->pull---->2 pages---->3----->build war---->
+
+
+EAR=WAR+JAR(ejb)
+
+WAR=web.xml----servlet container--web container
+EAR=applicaion.xml
+test.jar=ejb.xml--->ejb container
+
+
+ANT---build tool--->WAR/EAR/JAR/other archive(zip/tar..etc)
+
+targets/dependency target
+project name
+default target
+
+ant init
+ant war
+ant -->default target
+=================================================================================================
+
+JDK/JRE-->rpm
+Tomcat--zip
+
+
+ec2-user --->sudo su -- root
+
+sudo useraddd awsadmin
+
+jdk download -->rpm
+
+own ami--
+[root@ip-172-31-13-17 ~]# yum remove^C
+[root@ip-172-31-13-17 ~]# which java
+/usr/bin/java
+[root@ip-172-31-13-17 ~]# ls -l /usr/bin/java
+lrwxrwxrwx 1 root root 22 Jan 30 22:43 /usr/bin/java -> /etc/alternatives/java
+[root@ip-172-31-13-17 ~]# ls -l /etc/alternatives/java
+lrwxrwxrwx 1 root root 46 Jan 30 22:43 /etc/alternatives/java -> /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+[root@ip-172-31-13-17 ~]# ls -l /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+-rwxr-xr-x 1 root root 5464 Dec 19 23:58 /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+[root@ip-172-31-13-17 ~]#
+
+
+ rpm -ivh /tmp/jdk-7u80-linux-x64.rpm
+root@ip-172-31-13-17 java]# pwd
+/usr/java
+[root@ip-172-31-13-17 java]#
+
+
+
+  1  useradd awsadmin
+    2  passwd awsadmin
+    3  ls -ltr
+    4  java
+    5  clear
+    6  java -version
+    7  which java
+    8  ls -l /usr/bin/java
+    9  ls -l /etc/alternatives/java
+   10  ls -l /usr/lib/jvm/jre-1.7.0-openjdk.x86_64/bin/java
+   11  yum remove jdk*
+   12  rpm -qa *
+   13  rpm -qa * | grep -i java
+   14  java -version
+   15  rpm -e
+   16  rpm -e java-1.7.0-openjdk-1.7.0.161-2.6.12.0.75.amzn1.x86_64
+   17  uanme
+   18  uname
+   19  java
+   20  exit
+   21  ls -ltr
+   22  ls -ltr /tmp/
+   23  rpm -ivh /tmp/jdk-7u80-linux-x64.rpm
+   24  cd /usr/java/
+   25  ls -ltr
+   26  date
+   27  java --version
+   28  java -version
+   29  pwd
+   30  ls -ltr
+   31  pwd
+   32  cd /tmp/
+   33  ls -ltr
+   34  man unzipi
+   35  man unzip
+   36  unzip apache-tomcat-7.0.84.zip -d /opt
+   37  ls -ltr
+   38  history
+
+   
+   [root@ip-172-31-13-17 bin]# pwd
+/usr/java/jdk1.7.0_80/bin
+[root@ip-172-31-13-17 bin]# ./java -version
+java version "1.7.0_80"
+Java(TM) SE Runtime Environment (build 1.7.0_80-b15)
+Java HotSpot(TM) 64-Bit Server VM (build 24.80-b11, mixed mode)
+[root@ip-172-31-13-17 bin]# pwd
+/usr/java/jdk1.7.0_80/bin
+[root@ip-172-31-13-17 bin]#
+
+[root@ip-172-31-13-17 bin]# pwd
+/opt/apache-tomcat-7.0.84/bin
+[root@ip-172-31-13-17 bin]# cat setenv.sh
+export JAVA_HOME=/usr/java/jdk1.7.0_80
+[root@ip-172-31-13-17 bin]# cat setenv.sh
+export JAVA_HOME=/usr/java/jdk1.7.0_80
+[root@ip-172-31-13-17 bin]# ./startup.sh
+Using CATALINA_BASE:   /opt/apache-tomcat-7.0.84
+Using CATALINA_HOME:   /opt/apache-tomcat-7.0.84
+Using CATALINA_TMPDIR: /opt/apache-tomcat-7.0.84/temp
+Using JRE_HOME:        /usr/java/jdk1.7.0_80
+Using CLASSPATH:       /opt/apache-tomcat-7.0.84/bin/bootstrap.jar:/opt/apache-tomcat-7.0.84/bin/tomcat-juli.jar
+Tomcat started.
+[root@ip-172-31-13-17 bin]#
+
+
+#!/bin/bash
+
+tomcathome=/opt/apache-tomcat-7.0.84
+deployPath=$tomcathome/webapps
+$tomcathome/bin/shutdown.sh
+mkdir /opt/packages
+cd /opt/packages
+wget http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/10g/r3/cluster/session_state/files/shoppingcart.zip
+unzip shoppingcart.zip
+cp shoppingcart.war $deployPath
+$tomcathome/bin/startup.sh
+ps -ef | grep tomcat
+echo "tomcat deployment done and started"
+
+
+
+#!/bin/bash
+
+tomcathome=/opt/apache-tomcat-7.0.84
+deployPath=$tomcathome/webapps
+$tomcathome/bin/shutdown.sh
+rm -rf $tomcathome/webapps/*
+rm -rf /opt/packages/*
+$tomcathome/bin/startup.sh
+ps -ef | grep tomcat
+echo "tomcat deployment done and started"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
