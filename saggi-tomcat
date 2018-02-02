@@ -229,6 +229,155 @@ $tomcathome/bin/startup.sh
 ps -ef | grep tomcat
 echo "tomcat deployment done and started"
 
+=====================================================
+#!/bin/bash
+yum install bind-utils nc telent wget unzip -y 
+
+
+aws-cli.sh
+#!/bin/bash
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+tomcat-setup
+
+
+ec2
+JAVA-- Installation ---->oracle ----cred->internet
+apachetomcat--->Aapahe tomcat site-->internet
+setenv.sh--->export JAVA_HOME
+start--->
+github-structure
+
+
+#!/bin/bash
+tempfile=tomcat-setup
+mkdir /opt/softwares
+
+cd /opt/softwares
+aws s3 cp s3://petclinic-uat-deployment-files/jdk-7u80-linux-x64.rpm .
+rpm -ivh jdk-7u80-linux-x64.rpm
+sleep 5
+aws s3 cp s3://petclinic-uat-deployment-files/apache-tomcat-7.0.84.zip .
+unzip apache-tomcat-7.0.84.zip -c /opt/
+chmod -R 700 /opt/apache-tomcat-7*
+rm -rf /opt/apache-tomcat-7*/webapps/*
+cd /opt/apache-tomcat-7*/bin/
+./startup.sh
+cd /opt/softwares
+wget http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/10g/r3/cluster/session_state/files/shoppingcart.zip
+unzip shoppingcart.zip
+cp shoppingcart.war /opt/apache-tomcat-7*/webapps/
+ps -ef | grep tomcat >>$tempfile
+ls -ltr /opt/apache-tomcat-7*/webapps/ >>$tempfile
+
+
+status(){
+          pid=$(tomcat_pid)
+          if [ -n "$pid" ]
+            then echo -e "\e[00;32mTomcat is running with pid: $pid\e[00m"
+          else
+            echo -e "\e[00;31mTomcat is not running\e[00m"
+            return 3
+          fi
+}
+
+
+
+tomcat_pid() {
+        echo `ps -fe | grep /opt/tomcat_latest | grep -v grep | tr -s " "|cut -d" " -f2`
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+tempfile=tomcat-setup
+spath=/opt/softwares
+e=echo
+check directory exist or not------------>condition---if
+if [ -d $spath ]; then
+echo "$spath exists"
+else
+mkdir $spath
+fi
+#Downloading s3 content- jdk
+$e "i am downloading softwares from s3 bucket"
+if
+aws s3 cp s3://petclinic-uat-deployment-files/jdk-7u80-linux-x64.rpm $spath
+rpm -ivh jdk-7u80-linux-x64.rpm
+sleep 5
+
+$e "i am downloading softwares from s3 bucket"
+aws s3 cp s3://petclinic-uat-deployment-files/apache-tomcat-7.0.84.zip $spath
+
+unzip apache-tomcat-7.0.84.zip -c /opt/
+chmod -R 700 /opt/apache-tomcat-7*
+rm -rf /opt/apache-tomcat-7*/webapps/*
+cd /opt/apache-tomcat-7*/bin/
+./startup.sh
+cd /opt/softwares
+wget http://www.oracle.com/webfolder/technetwork/tutorials/obe/fmw/wls/10g/r3/cluster/session_state/files/shoppingcart.zip
+unzip shoppingcart.zip
+cp shoppingcart.war /opt/apache-tomcat-7*/webapps/
+ps -ef | grep tomcat >>$tempfile
+ls -ltr /opt/apache-tomcat-7*/webapps/ >>$tempfile
+
+echo $?
+
+======================================================
+#!/bin/sh
+cp home/testing/present.txt home/testing/future.txt
+   echo "Copy Code: $? - Successful"
+if [ $? != 0 ]; then
+   echo "Copy Code: $? - Unsuccessful"
+   else
+   echo "Copy Code: $? - successful"
+fi
+========================================================
+if [ -d "$LINK_OR_DIR" ]; then 
+  if [ -L "$LINK_OR_DIR" ]; then
+    # It is a symlink!
+    # Symbolic link specific commands go here.
+    rm "$LINK_OR_DIR"
+  else
+    # It's a directory!
+    # Directory command goes here.
+    rmdir "$LINK_OR_DIR"
+  fi
+fi
+
+===================================================
+-e: any kind of archive 
+
+-f: file 
+
+-h: symbolic link 
+
+-r: readable file 
+
+-w: writable file 
+
+-x: executable file 
+
+-s: file size greater than zero 
+
+
 
 
 
