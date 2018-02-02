@@ -1,0 +1,64 @@
+ec2
+JAVA-- Installation ---->oracle ----cred->internet
+apachetomcat--->Aapahe tomcat site-->internet
+setenv.sh--->export JAVA_HOME
+start--->
+
+
+my own repository=storage--->aws s3---
+
+storage--->hard disc- block storage
+object storage--->s3,google drive
+types--->block stroage(ebs,efs), object stroage(s3)- google drive- like
+
+s3-- api calls
+http/https
+put/get/delete
+permissions
+1)create bucket- check permissions
+2)upload content( objects)
+
+https://s3.amazonaws.com/aws-cli/AWSCLI64.msi
+
+s3 - cli
+
+arn:aws:s3:::saggi.awsmiddleware.in
+
+Access Key ID:
+AKIAJXVZ5CREZ2VX4WFA
+Secret Access Key:
+d59gji7IiFpUeaWFk6YIVqrMchqXTqQ5jNdrkJec
+
+aws s3 ls
+aws s3 cp <source> s3://
+
+aws s3 cp s3://  s3://
+
+aws s3 cp s3://  <local>
+
+aws s3 mb
+aws s3 commands
+
+
+:\Apache22\htdocs\softwares>aws s3 cp s3://petclinic-uat-deployment-files/ s3://petclinic-preprod-deployment-files/
+fatal error:
+
+F:\Apache22\htdocs\softwares>aws s3 cp s3://petclinic-uat-deployment-files/ s3://petclinic-preprod-deployment-files//
+
+F:\Apache22\htdocs\softwares>aws s3 cp s3://petclinic-uat-deployment-files/ s3://petclinic-perf-deployment-files//
+
+F:\Apache22\htdocs\softwares>aws s3 cp s3://petclinic-uat-deployment-files/ s3://petclinic-perf-deployment-files/
+
+F:\Apache22\htdocs\softwares>aws s3 cp s3://petclinic-uat-deployment-files/ s3://petclinic-preprod-deployment-files/
+
+F:\Apache22\htdocs\softwares>aws s3 cp s3://petclinic-uat-deployment-files/ s3://petclinic-prod-deployment-files/
+
+F:\Apache22\htdocs\softwares>
+
+
+aws enviroment--
+
+ec2--------------------->s3
+IAM---role-- s3 full access
+
+====================================================================
