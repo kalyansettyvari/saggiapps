@@ -220,6 +220,140 @@ aws environment-2 servers
 2--index.php,image.php
 dev---->push---->github(save)---------------->automatillcay---BLue/green deployment--->
 
+======================================================================================
+
+
+===================================================
+s3 security topics
+elb----->apache---->Tomcat
+i am role
+and only bucket policy
+
+jenkins installation ways ( free or enterprise(cloudbees)---war 
+jenkins.jar
+yum installation
+rpm
+
+
+
+ansbile installation
+find
+
+webserver---tomcat-webapps--jenkins
+
+
+
+tomcat1
+tomcat2
+
+to configure extra repository= enable EPEL
+yum----------------->/etc/yum.repos.d/*.repo(baseurl)
+
+systemctl start jenkins
+
+IamRole
+qa-petclinic-app-----ec2--------->qa-petclinic-app1----->custompolicy(inline)
+perf-petclinic-app----------->perf-petclinic-app1
+pre-prod-petclinic-app-------->pre-prod-petclinic-app1
+prod-prod-petclinic-app------->prod-petclinic-app1
+
+Bucket polices and IamRoles--->
+
+/opt/tomcat_latest
+bin/startup.sh and shtdown.sh and setenv.sh(environment variable JAVA_HOME along with heap arguments, out of memory)
+webapps(shoppingcart.war)
+logs--catalina.out
+conf---server.xml,context.xml(jdbc) (http=8080,ajp=8009, https=8443,suhtdown=8005)
+lib(*.jar, servelet-api.jar , jasper.jar)
+work---->
+temp
+
+
+
+
+a.java---->a.class--->execute
+
+a.jsp--->a.java--->a.class
+
+
+timely build/daily build
+eclipse--->total code--->github--->build---->shopping.war
+
+jenkins--->build--->shoppingcart.war -->nexus--->qal
+
+
+qal
+pre-prod
+perf
+prod
+
+8005
+
+8080
+
+8009
+
+
+8443--https--ssl
+
+server.xml
+<server>
+<shutdown>
+lister
+
+<service>
+connector--http=8080
+connector---ajp--8009
+connector--https--8443---commented
+
+<Host name="localhost"  appBase="/opt/apps"
+            unpackWARs="true" autoDeploy="true">
+
+<Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
+               prefix="localhost_access_log." suffix=".txt"
+               pattern="%h %l %u %t &quot;%r&quot; %s %b" />------->LogFormat---
+
+
+	
+
+
+tomcat-1
+8080
+8005
+8009
+
+tomcat2
+8180
+8105
+8109
+
+
+
+/home/awsadmin/.jenkins/workspace/buildjob/webapp/target/webapp.war
+
+
+mvn package
+
+
+myapp=/home/awsadmin/.jenkins/workspace/buildjob/webapp/target/webapp.war
+
+scp $myapp  server1:/opt/tomcat_latest/webapps
+scp $myapp  server1:/opt/tomcat_latest2/webapps
+
+
+
+run each manuall
+
+build job
+deployment
+restart job
+
+==================
+
+build job--->poll scm--->* * * * *
+postbuild--->deployment--->
+
+
 
 
 
