@@ -294,18 +294,6 @@ tomcat_pid() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 #!/bin/bash
 tempfile=tomcat-setup
 spath=/opt/softwares
@@ -376,6 +364,309 @@ fi
 -x: executable file 
 
 -s: file size greater than zero 
+
+==================================================
+
+QAL
+===========
+jenkins
+tomcat-2-8080,8180
+tomcat-2-8080,8180
+S3 {env}-petclinic-app
+iamrole=
+awsadmin=sudoer,direct login
+/opt/automation/scripts/tomcat_installtion.sh ,{env}_tomcat.sh--->tomcat_pid--->ps -ef | grep -w {$CATALINA_BASE}
+
+Pre-Prod
+============
+tomcat-2-8080,8180
+tomcat-2-8080,8180
+S3
+awsadmin=sudoer,direct login , 
+/opt/tomcat_latest
+/opt/tomcat_latest2
+/opt/automation/scripts/tomcat_installtion.sh ,{env}_tomcat.sh
+Prod
+===============
+tomcat-2-8080,8180
+tomcat-2-8080,8180
+s3 {env}-petclinic-app
+awsadmin=sudoer,direct login
+/opt/tomcat_latest
+/opt/tomcat_latest2
+/opt/automation/scripts/tomcat_installtion.sh ,{env}_tomcat.sh
+
+
+tomcat_latest2
+ps -ef | grep -w "tomcat_latest2" -->"tomcat_latest
+
+
+
+ip:8080/yourapp
+ip:8080/yourapp
+client---->apache/nginix/webserver--------------->Tomcat/weblogic/jboss/websphere---->DB
+
+client---->load balancer--->2(apache)(auto scaling)---------->multi(app server)
+
+client---Route53/DNS->load balancer--->2(apache)(auto scaling)------load balancer---->multi(app server)(auto scaling)--->DB
+
+
+client--->80/443------>lb--->80/443--->apache--->80/443--->lb--->8080(tomcat)
+
+integration(Aapche and Tomcat)- Proxy
+
+NameVirtualHost *:80
+
+<VirtualHost *:80>
+    ServerName saggi.awsmiddleware.in
+	DocumentRoot "/opt/website"
+	DirectoryIndex index.html
+    
+    ErrorLog "/opt/logs/apache/error_log"
+    CustomLog "/opt/logs/apache/access_log" common
+	<Directory "/opt/website">
+	Allow from all
+	</Directory>
+	
+</VirtualHost>
+
+<VirtualHost *:80>
+    ServerName saggi1.awsmiddleware.in
+	DocumentRoot "/opt/website1"
+	DirectoryIndex index.html
+    
+    ErrorLog "/opt/logs/apache1/error_log"
+    CustomLog "/opt/logs/apache1/access_log" common
+	<Directory "/opt/website1">
+	Allow from all
+	</Directory>
+	
+</VirtualHost>
+
+
+
+saggi.awsmiddleware.in/shoppingcart
+
+<VirtualHost *:80>
+    ServerName saggi.awsmiddleware.in
+	
+	ErrorLog "/opt/logs/apache/error_log"
+    CustomLog "/opt/logs/apache/access_log" common
+	
+	ProxyPass /jenkins  http://172.31.83.27:8080/jenkins
+	ProxyPassReverse /jenkins  http://172.31.83.27:8080/jenkins
+	
+</VirtualHost>
+
+protocal://<hostname>:<port>/contxt
+
+<VirtualHost *:80>
+    ServerName saggi.awsmiddleware.in
+	
+	ErrorLog "/opt/logs/apache/error_log"
+    CustomLog "/opt/logs/apache/access_log" common
+	
+	ProxyPass /shoppingcart balancer://a
+	ProxyPassReverse /shoppingcart balancer://a
+	
+	<balancer member=a>
+		Member1  http://tomcat1:8080/shoppingcart
+		Member2 http://tomcat2:8080/shoppingcart
+	</balancer>
+	
+</VirtualHost>
+
+
+
+
+
+client---->apache---->tomcat--->DB
+
+
+http://54.175.214.208:8080/jenkins/login?from=%2Fjenkins
+
+http://54.175.214.208/jenkins/login?from=%2Fjenkins
+
+<VirtualHost *:80>
+    ServerName saggi.awsmiddleware.in
+    ProxyPass /jenkins http://localhost:8080/jenkins
+	ProxyPassReverse /jenkins http://localhost:8080/jenkins
+</VirtualHost>
+========================================================
+
+
+<VirtualHost *:80>
+    ServerName jenkins.awsmiddleware.in
+    ProxyPass /jenkins http://localhost:8080/jenkins
+	ProxyPassReverse /jenkins http://localhost:8080/jenkins
+</VirtualHost>
+
+
+
+
+
+<VirtualHost *:80>
+    ServerName shop.awsmiddleware.in
+    ProxyPass /shoppingcart http://tomcat1:8080/shoppingcart
+	ProxyPassReverse /shoppingcart http://tomcat1:8080/shoppingcart
+</VirtualHost>
+
+
+
+/etc/httpd/logs/error.log
+
+[Wed Feb 07 02:04:39.696178 2018] [mpm_prefork:notice] [pid 29086] AH00163: Apache/2.4.6 (Red Hat Enterprise Linux) configured -- resuming normal operations
+[Wed Feb 07 02:04:39.696200 2018] [core:notice] [pid 29086] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Wed Feb 07 02:10:47.315926 2018] [mpm_prefork:notice] [pid 29086] AH00170: caught SIGWINCH, shutting down gracefully
+(13)Permission denied: AH00091: httpd: could not open error log file /opt/logs/apache/error_log.
+AH00015: Unable to open logs
+(13)Permission denied: AH00091: httpd: could not open error log file /opt/logs/apache/error_log.
+AH00015: Unable to open logs
+[Wed Feb 07 02:18:08.991888 2018] [core:notice] [pid 30080] SELinux policy enabled; httpd running as context system_u:system_r:httpd_t:s0
+[Wed Feb 07 02:18:08.992734 2018] [suexec:notice] [pid 30080] AH01232: suEXEC mechanism enabled (wrapper: /usr/sbin/suexec)
+[Wed Feb 07 02:18:09.003053 2018] [auth_digest:notice] [pid 30080] AH01757: generating secret for digest authentication ...
+[Wed Feb 07 02:18:09.003625 2018] [lbmethod_heartbeat:notice] [pid 30080] AH02282: No slotmem from mod_heartmonitor
+[Wed Feb 07 02:18:09.005820 2018] [mpm_prefork:notice] [pid 30080] AH00163: Apache/2.4.6 (Red Hat Enterprise Linux) configured -- resuming normal operations
+[Wed Feb 07 02:18:09.005846 2018] [core:notice] [pid 30080] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Wed Feb 07 02:18:47.805096 2018] [proxy:error] [pid 30083] (13)Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:8080 (localhost) failed
+[Wed Feb 07 02:18:47.805145 2018] [proxy:error] [pid 30083] AH00959: ap_proxy_connect_backend disabling worker for (localhost) for 60s
+[Wed Feb 07 02:18:47.805156 2018] [proxy_http:error] [pid 30083] [client 49.205.223.43:5807] AH01114: HTTP: failed to make connection to backend: localhost
+^C
+
+SELinux:-
+=============
+[root@ip-172-31-83-27 logs]# getenforce
+Enforcing
+[root@ip-172-31-83-27 logs]# setenforce 0
+[root@ip-172-31-83-27 logs]# getenforce
+Permissive
+[root@ip-172-31-83-27 logs]#
+
+/etc/selenux/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client--->aws.awsmiddleware.in---->ec2(apache)------------->ec2(shoppincart)
+
+
+webservertest-1730914367.us-east-1.elb.amazonaws.com/shoppingcart--->80--->webserver---->tomcat1
+
+
+
+
+
+
+
+
+
+<VirtualHost *:80>
+
+ServerName shop.awsmiddleware.in
+ProxyPass /shoppingcart balancer://mycluster/
+ProxyPassReverse /shoppingcart balancer://mycluster/
+	
+	<Proxy balancer://mycluster>
+    BalancerMember http://tomcat1:8080/shoppingcart
+    BalancerMember http://tomcat2:8080/shoppingcart
+</Proxy>
+</VirtualHost>
+
+
+lbmethod_heartbeat:notice] [pid 1262] AH02282: No slotmem from mod_heartmonitor
+[Wed Feb 07 03:01:35.891147 2018] [mpm_prefork:notice] [pid 1262] AH00163: Apache/2.4.6 (Red Hat Enterprise Linux) configured -- resuming normal operations
+[Wed Feb 07 03:01:35.891169 2018] [core:notice] [pid 1262] AH00094: Command line: '/usr/sbin/httpd -D FOREGROUND'
+[Wed Feb 07 03:01:59.794586 2018] [proxy:error] [pid 1266] (13)Permission denied: AH00957: HTTP: attempt to connect to 172.31.80.255:8080 (tomcat1) failed
+[Wed Feb 07 03:01:59.794635 2018] [proxy:error] [pid 1266] AH00959: ap_proxy_connect_backend disabling worker for (tomcat1) for 60s
+[Wed Feb 07 03:01:59.794646 2018] [proxy_http:error] [pid 1266] [client 49.205.223.43:6791] AH01114: HTTP: failed to make connection to backend: tomcat1
+[Wed Feb 07 03:01:59.794759 2018] [proxy:error] [pid 1266] (13)Permission denied: AH00957: HTTP: attempt to connect to 172.31.95.60:8080 (tomcat2) failed
+[Wed Feb 07 03:01:59.794766 2018] [proxy:error] [pid 1266] AH00959: ap_proxy_connect_backend disabling worker for (tomcat2) for 60s
+[Wed Feb 07 03:01:59.794769 2018] [proxy_http:error] [pid 1266] [client 49.205.223.43:6791] AH01114: HTTP: failed to make connection to backend: tomcat2
+[Wed Feb 07 03:02:02.737638 2018] [proxy:error] [pid 1274] (13)Permission denied: AH00957: HTTP: attempt to connect to 172.31.95.60:8080 (tomcat2) failed
+[Wed Feb 07 03:02:02.737697 2018] [proxy:error] [pid 1274] AH00959: ap_proxy_connect_backend disabling worker for (tomcat2) for 60s
+[Wed Feb 07 03:02:02.737708 2018] [proxy_http:error] [pid 1274] [client 49.205.223.43:6793] AH01114: HTTP: failed to make connection to backend: tomcat2
+[Wed Feb 07 03:02:02.737808 2018] [proxy:error] [pid 1274] (13)Permission denied: AH00957: HTTP: attempt to connect to 172.31.80.255:8080 (tomcat1) failed
+[Wed Feb 07 03:02:02.737816 2018] [proxy:error] [pid 1274] AH00959: ap_proxy_connect_backend disabling worker for (tomcat1) for 60s
+[Wed Feb 07 03:02:02.737818 2018] [proxy_http:error] [pid 1274] [client 49.205.223.43:6793] AH01114: HTTP: failed to make connection to backend: tomcat1
+[Wed Feb 07 03:02:49.208619 2018] [proxy:error] [pid 1267] (13)Permission denied: AH00957: HTTP: attempt to connect to 172.31.80.255:8080 (tomcat1) failed
+[Wed Feb 07 03:02:49.208660 2018] [proxy:error] [pid 1267] AH00959: ap_proxy_connect_backend disabling worker for (tomcat1) for 60s
+[Wed Feb 07 03:02:49.208671 2018] [proxy_http:error] [pid 1267] [client 49.205.223.43:6813] AH01114: HTTP: failed to make connection to backend: tomcat1
+[Wed Feb 07 03:02:49.208763 2018] [proxy:error] [pid 1267] (13)Permission denied: AH00957: HTTP: attempt to connect to 172.31.95.60:8080 (tomcat2) failed
+[Wed Feb 07 03:02:49.208771 2018] [proxy:error] [pid 1267] AH00959: ap_proxy_connect_backend disabling worker for (tomcat2) for 60s
+[Wed Feb 07 03:02:49.208773 2018] [proxy_http:error] [pid 1267] [client 49.205.223.43:6813] AH01114: HTTP: failed to make connection to backend: tomcat2
+[root@ip-172-31-83-27 logs]#
+
+
+elb--->ec2 machines
+
+
+shop.awsmiddleware.in---->elb---->webserver(2)----------------->alb----targe group----->tomcat(2)
+
+
+alb---->target group---->instances
+
+
+
+apache2tomcat-901398274.us-east-1.elb.amazonaws.com
+
+
+
+<VirtualHost *:80>
+
+ServerName shop.awsmiddleware.in
+ProxyPass /shoppingcart balancer://mycluster/
+ProxyPassReverse /shoppingcart balancer://mycluster/
+	
+	<Proxy balancer://mycluster>
+    BalancerMember http://apache2tomcat-901398274.us-east-1.elb.amazonaws.com:8080/shoppingcart
+    BalancerMember http://apache2tomcat-901398274.us-east-1.elb.amazonaws.com:8080/shoppingcart
+</Proxy>
+</VirtualHost>
+
+1)single vh(localhost) ( jenkins)--->webserver-ip/jenkins--->http.conf.jenkins
+2)shoppingcart vh(tomcat1)--->webserver/shoppingcart-->httpd.conf.tomcat1
+3)shoppingcart vh--->balancer--->stopped tomcat1/tomcat2--->
+
+
+elb/shoppingcart-->webserver-->access the page--->success
+alb
+
+
+
+devopsmachine(all my tools-- puppet/ansbile/jenkins/shell/package)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
