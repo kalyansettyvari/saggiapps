@@ -1,0 +1,17 @@
+{
+  "Id": "Policy1518237533508",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1518237525991",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::mys3bucketdemoaws",
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::377845819071:role/cloudformation"
+        ]
+      }
+    }
+  ]
+}
