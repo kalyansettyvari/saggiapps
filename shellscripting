@@ -266,6 +266,72 @@ for i in tomcat1 tomcat2
 do
  scp /opt/apps/shoppingcart.war $i:/opt/tomcat_latest/webapps
 done
+================================================
+vpc
+d
+
+sed
+awk
+cut
+sort  -nr
+diff
+uniq
+
+>/dev/null 2>&1
+
+2 error
+1=success
+$0
+$1
+
+
+crontab
+* * * * * 
+[Minute(0-59)] [hour(0-23)] [Day_of_the_Month(1-31)] [Month_of_the_Year(1-12)] [Day_of_the_Week(0-6)] [command]
+
+*/2 *  * * * /root/url_check.sh
+root@ip-10-0-0-60 ~]# tail -f /var/log/cron
+
+sort | uniq
+
+first command ouput | input to second cmd 
+
+
+#!/bin/sh
+yum -y install httpd 
+chkconfig httpd on--------------Enabling OS level service/daemon(systemd ,httpd,ntptd,sshd,)
+systemctl start httpd
+
+curl http://169.254.169.254/latest/meta-data/
+  
+ https://github.com/aws-cloudformation/tutorial
+ 
+ 
+autoscaling and 
+
+
+During ec2 provisoning i want to install some package.(user data)--
+
+ssh --public--------- private instance--------yum ------------>internet
+
+============================================================================
+Configuration Management 
+
+POC--->proof of concept
+
+json/yaml
+Rex
+SALT
+Ansible------------------>
+Puppet
+Chef
+---------------->frameworks
+
+key and value
+lists
+dictionary
+tasks------->action ,description , name
+===============================================================================
 
 
 
