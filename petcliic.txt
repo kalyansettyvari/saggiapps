@@ -1,3 +1,14 @@
+yum install mysql
+
+mysql -h <rds end point url > -u <dbusername> -p 
+create database petclinic;
+
+show databases;
+use petclinic;
+show tables;
+
+
+
 5)Create a petclinic db in mysql. ( CREATE DATABASE petclinic;)
  
 
