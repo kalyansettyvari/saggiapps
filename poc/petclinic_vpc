@@ -1,0 +1,120 @@
+1 vpc--->cidr block-->10.0.0.0/16
+
+public subnet(alb,elb,jump server, apache)--10.0.1.0/24
+private subnet(tomcat)---10.0.2.0/24
+data subnet(datbase)---10.0.3.0/24
+
+3 machines-->aws
+public subnet--jump server
+ssh--->1 classic---->jump server(public subnet)
+
+private subnet
+1alb--1tg--80->apache(public subnet)---->private subnet---alb--tg--->8080-->2 tomcat(pirvate subnet)
+mysql in data subnet
+
+=============================================
+SecurityGroups
+
+admin=bastionlogin---elb
+ssh-22-anywhere
+
+publicalb
+http-80-anywhere
+
+webadminlogin
+ssh-22-bastionlogin
+
+webflow
+http-80-publicalb
+
+privatealb
+http-80-webflow
+
+tomcatadminlogin
+ssh-22-bastionlogin
+
+tomcatflow
+http-8080-privatealb
+
+dbflow
+mysql/aurora-3306-tomcatflow
+============================================
+elb
+====
+classic--ssh-bastionlogin--public
+applb-apache -- public--tg
+applb-tomcat- private-tg
+
+
+
+jdk--
+Apache Tomcat-v7.0.85/ 
+Java SE 6 -6 SDK Update 4 (with JDK 6u38)---dont installrpm and go with tar.gz
+==========================================
+/opt/tomcat_latest
+/opt/dontuser_Apache7xxx
+/opt/jdk6
+
+
+--->Apache Tomcat 9
+Java SE Development Kit 8u152(jdk tar)
+
+/opt/apache9
+/opt/jdk9
+
+rm -f /usr/bin/java 
+
+ln -s /opt/jdk9/bin/java /usr/bin/java
+----------------------
+rm -f /usr/bin/java 
+
+ln -s /opt/jdk7/bin/java /usr/bin/java
+
+================================================
+
+tomcat7.sh
+
+tomcat9.sh
+
+
+1 jenkins
+key generate
+
+
+
+2 tomcat
+
+user data
+echo "xxxxxxxxxxxxxxxxxxxxxxxxx" >>/home/awsadmin/.ssh/authrization_keys
+
+
+/home/awsadmin/.ssh/authrization_keys
+
+====================
+iam roles--->ec2 read/s3 full
+s3 bucket(s/w)
+bucket policy--->xxxx
+
+
+
+
+
+
+
+
+1-Apache
+2-tomcat
+----->8 version
+----->petclinic------------------>test the url
+
+alb url/petclinic --->
+
+
+<vh *:80>
+ServerName xxxx
+RedirectMatch ^xxxx$ /petclinic
+proxyapps xxxx
+proxypassrverse
+
+
+
