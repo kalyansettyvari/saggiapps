@@ -3269,9 +3269,518 @@ notifier: start jenkin
 handler: start jenkin
 servcie: name: jenkins state: started----->
 
+=============================================
+cli
+
+AMI creation tool/Continuios delivery    | packer,spinnaker
+
+
+Infra Monitoring tool/APM tool - ITM , 
+
+ 
+ IAC(infra as a code) tool
+ 
+ 
+lab: setting up hostname
+ 
+ 
+=========================================================================
+ 
+hname=$(curl http://169.254.169.254/latest/meta-data/local-hostname)
+ 
+sname=$hname.dev.saggi.com
+echo $sname >/etc/hostname
+
+ipname=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+echo $ipname $sname >>/etc/hosts
+====================================================================
 
 
 
+
+
+ https://www.spinnaker.io/guides/tutorials/codelabs/hello-deployment/
+ https://www.linkedin.com/pulse/terraform-pain-gain-pradipta-dash/
+ https://www.linkedin.com/pulse/getting-started-terraform-pradipta-dash/
+ 
+ 
+ ==========================================================================
+ IIS setup
+ jboss basics
+ ssl--tomcat and apache
+ upload docs into box url
+ 
+ server.xml
+ <server>
+ <listner>
+ <service name=catalina>
+ <connectors http=8080...>
+ <connector ajp--8009>
+ <!---connector https=8443...>--->
+ <localhost appBase=webapps>
+ <log ---localhost_access.log format=%>
+ 
+ </server>
+ 
+ proxypass
+ mod_jk
+ ===========================================================
+ jboss/weblogic/websphere/glasfish-- AS - EJB+WEb+port containers
+ tomcat - no ejb container and only one web container( 
+ WAR-- deployment descriptor- web.xml(tomcat)
+ EAR- deployment descriptor-application.xml(jboss/weblogic/websphere/glasfish)
+ EJB-JAR - ejb.xml
+ 
+ Jboss--- jboss org(wildfly)--opensource and redhat( EAP)- enter prise app platform--paid and support(case)
+ 
+ jboss org------------>jobss org-1=redhat EAP version
+ jboss - 5.x,6.x,7.x
+ two modes
+ std- std-<profile>.xml
+ domain-domain.xml and host.xml
+ (process ctrler , host ctrler , servers)
+ domain ctrler --->gui--management-
+ 
+ Gui console
+ cli - jboss cli
+ 
+ bin/*.sh
+ std-logs/
+ domain----logs/
+ modules
+ 
+https://www.slideshare.net/AnandrajK/j-boss-basics?next_slideshow=1
+
+https://www.linkedin.com/pulse/robust-monitoring-aws-pradipta-dash/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_post_details%3BnazF0s4RTwyJTml2azZiDA%3D%3D
+ 
+apache- httpd.conf
+tomcat- server.xml
+jboss-two modes--std and domain
+
+profile---->
+default(no cluster)
+full(no cluster)
+ha-- clustering
+full-ha-clustering
+
+
+standlone--->sing jvm-->configuration
+std.xml--->default
+std-ha.xml
+std-full.xml
+std-full-ha.xml
+
+domain
+domain.xml( which profile)
+host.xml
+
+
+extension
+management
+subsystem
+interfaces(ip address)
+socket-group(ports)
+
+domain.xml 
+extenstions
+mgmt
+profile=default
+profile=full
+profile=ha
+profile=full-ha
+<sg>
+
+
+host.xml
+<mgmt>
+<dc>...</dc>
+<servers----sg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+on-demand service
+
+
+
+cluster=group of jvms
+
+server group=cluster --->jboss-->petclinic
+
+std1--ha/full-ha---->petclinic----->in each jvm----own admin console
+std2--ha/full-ha---->petclinic----->in each jvm----own admin console
+
+
+domain1-domain controller--->central managment console (admin console)
+domain2-->host ctonrolll(full-ha/ha)------>update to domain1 console
+domain3-->host ctonrolll(full-ha/ha)------>update to domain1 console
+
+
+Clustering(vertical and horizantal)
+=============
+vertical clustering= process fail over/ draws back= machine failover
+horizontal clustering= process fail and machine failover
+HA- High availability
+failover(request/session failover)
+scalability
+load balancer
+
+
+
+
+
+
+session failover(session tracking)---->what is session ? tab---->session--->all those requests----------------->single jvm--
+any http request is stateless
+
+facebook--->uname/password--------------->server1(uname/password)----->cookies(uname/password)-->messaging ?2nd request---?
+2nd request ( uname/password)
+3rd request--->---------------------------------server1 went download
+
+4th request---->cluster----->server2---->
+
+================================================================================================
+DR---->DisasterRecovery
+
+Region--->AZ--3
+AZ--1
+AZ-2
+------>ec2 machines /db --1 file----------------------->anotehr region sync
+clustering--->
+
+30 mins---1 mins/2mins
+
+
+Recovery Time Objective (RTO) and Recovery Point Objective (RPO)--->less than sla-
+
+================================================================================================
+
+www.abc.com----dns------->1dc---->api calls-->lamda function------db(read replica)------synch----
+dns-2dc--->ec2 machines(automatically)--->prod(5mins)-----database has to run
+
+
+awesome-challenging--->
+petlinic---->gui--->created one user---->
+rds------->petclinic---tables------------------------------region
+
+stop/start/deployment---
+domain setup
+
+================================================================================================
+ansiwible with jboss installation
+ansible stop/start/deployment---
+
+
+apache ansible
+apache and jobss integration
+autoscaling/ecs(docker)
+
+exam point-->iops/storage/rds
+IIS setup
+
+check excel review 
+1)5 jobs
+2)20 shell scenarios from stack
+3)10 ansbile playbooks---
+
+
+
+domain setup
+
+lamp
+
+ansile/github
+junit
+pthon---->
+postgress
+mongodb/redshift
+kafka
+
+=======================================
+
+cli--->list servers--->filter--->ip address--->
+ping $ip >>outputs
+
+hname=$(curl http://169.254.169.254/latest/meta-data/local-hostname)
+ 
+sname=$hname.jbossmaster.saggi.com
+echo $sname >/etc/hostname
+
+ipname=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
+echo $ipname $sname >>/etc/hosts
+reboot
+
+PasswordAuthentication yes
+service sshd restart
+
+
+sed 's/PasswordAuthentication no/PasswordAuthentication yes/g' sshd_config
+sed -i 's/enabled=0/enabled=1/' /etc/yum.repos.d/redhat-rhui-client-config.repo
+
+	rpm -i epel-release-latest-7.noarch.rpm
+	yum update -y 
+	yum install ansible -y
+	ansible localhost -m ping
+	echo "success"
+
+
+https://github.com/ansible/ansible-examples/tree/master/jboss-standalone
+
+https://github.com/ansible/ansible-examples.git
+
+
+
+
+std.sh----------->jboss home--->std--->configuration--->std.xml
+
+
+ nohup sh standalone.sh &
+ nohup sh domain.sh &
+ 
+ -bash-4.2$ ./add-user.sh
+
+What type of user do you wish to add?
+ a) Management User (mgmt-users.properties)
+ b) Application User (application-users.properties)
+(a): a
+
+Enter the details of the new user to add.
+Realm (ManagementRealm) :
+Username : jbossadmin
+Password :
+Re-enter Password :
+About to add user 'jbossadmin' for realm 'ManagementRealm'
+Is this correct yes/no? yes
+Added user 'jbossadmin' to file '/usr/share/jboss-as/standalone/configuration/mgmt-users.properties'
+Added user 'jbossadmin' to file '/usr/share/jboss-as/domain/configuration/mgmt-users.properties'
+-bash-4.2$
+
+
+
+
+
+
+domain.xml
+=======================
+ <server-groups>
+        <server-group name="main-server-group" profile="full">
+            <jvm name="default">
+                <heap size="64m" max-size="512m"/>
+            </jvm>
+            <socket-binding-group ref="full-sockets"/>
+        </server-group>
+        <server-group name="other-server-group" profile="full-ha">
+            <jvm name="default">
+                <heap size="64m" max-size="512m"/>
+            </jvm>
+            <socket-binding-group ref="full-ha-sockets"/>
+        </server-group>
+    </server-groups>
+	
+	
+8080+
+8009
+
+
+	
+host.xml
+===============
+ <servers>
+     59         <server name="server-one" group="main-server-group">
+     60             
+     67         </server>
+     68         <server name="server-two" group="main-server-group" auto-start="true">
+     69             
+     71             <socket-bindings port-offset="10"/>
+     72         </server>
+     73         <server name="server-three" group="other-server-group" auto-start="false">
+     74             
+     76             <socket-bindings port-offset="250"/>
+     77         </server>
+	 
+	 </servers>
+
+8080+10--->8090
+
+8009+10--->8019
+
+
+ <socket-binding-group name="full-sockets" default-interface="public">
+            <!-- Needed for server groups using the 'full' profile  -->
+            <socket-binding name="ajp" port="8009"/>
+            <socket-binding name="http" port="8080"/>
+            <socket-binding name="https" port="8443"/>
+            <socket-binding name="jacorb" interface="unsecure" port="3528"/>
+            <socket-binding name="jacorb-ssl" interface="unsecure" port="3529"/>
+            <socket-binding name="messaging" port="5445"/>
+            <socket-binding name="messaging-throughput" port="5455"/>
+            <socket-binding name="osgi-http" interface="management" port="8090"/>
+            <socket-binding name="remoting" port="4447"/>
+            <socket-binding name="txn-recovery-environment" port="4712"/>
+            <socket-binding name="txn-status-manager" port="4713"/>
+			
+			
+
+nohup sh domain.sh -Djboss.domain.base.dir=/usr/share/jboss-as/hostctl1/ &
+
+
+
+
+
+domain--->admin console
+
+hostctl1--->admin console
+host.xml
+<dc>
+</dc>
+
+
+
+ec2
+/opt/jboss/bin/
+
+domain
+-----------
+domain.xml(9990/9999)----------->dc------------------->admin console
+server group=cluster1
+server group=clusetr2
+host.xml(remove jvms)
+<dc>
+<local>
+</dc>
+
+
+
+
+
+domain--------------------->hostctl1
+domain.xml
+host.xml
+<dc>
+<remote host=127.0.0.1 port=9999>
+</dc>
+<server name="jvm1" sg=cluster1>
+<serer name=jvm2" sg=cluster2>
+<server name="jvm3" sg=cluster1>
+<serer name=jvm4" sg=cluster2>
+
+mbeans---->jmx console
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  
  
