@@ -1,0 +1,26 @@
+what are differences between jboss 5,6,7 ?
+what is domain ?
+what is std and domain ?
+differnces b/w std and domain ?
+what are profiles in jboss ?
+how to enable clustering in jboss ?
+how you solve when jboss is slow ?
+enable jms in jboss ?
+enable datasource in jboss ?
+how to create a domain ?
+enable ldap in jboss ?
+how enable session failover in jboss ?
+integration b/w jboss and apache ?
+patches ?
+how to download patch ?
+how to apply patch and rollback ?
+how to take bakcup of current setup in jboss ?
+how to deploy in cli ?
+start/stop servergroup from cli ?
+what is multicast ?
+cluster deployment procedure ?
+creating users for admin console ?
+
+
+
+
