@@ -1,0 +1,150 @@
+192.168.1.1
+
+Complete Host stop:
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command="/host=master:shutdown"
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command="/host=slave1:shutdown"
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command="/host=slave2:shutdown"
+
+
+
+
+Individuval jboss servers stop /start
+
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/hc1/server-config=c1-jvm1:stop
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/hc1/server-config=c1-jvm2:start
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave1/server-config=Appsrv02:stop
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave2/server-config=Appsrv03:stop
+
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=master/server-config=Appsrv01:start
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave1/server-config=Appsrv02:start
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave2/server-config=Appsrv03:start
+
+
+
+Server-group start stop
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/server-group=cluster1:start-servers
+
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/server-group=cluster1:stop-servers
+
+
+
+
+
+
+
+add user (bin/add-user.sh)
+copy and paste the domain into hc names(domain1,domain2)
+remove the servers section in host.xml in dc
+add sg in domain.xml in dc
+start domain (dc)=nohup sh domain.sh &
+=============================================
+domain1
+============
+host.xml
+==========
+secret value(management)---------
+hostname(first value)-----------
+add servers(last)
+change the managment ports(9999 to 19999 and 9990 to 19990) in host.xml
+add dc info(remove local and enable remote)
+
+start hc:-nohup sh domain.sh -b 127.0.0.1 -bmanagement 127.0.0.1 -Djboss.domain.base.dir=/usr/tomcat/jboss-eap-6.3/domain1 &
+
+
+=========================================================================
+domain2
+============
+host.xml
+==========
+
+copy and paste domain1 into domain2
+
+change the hostname
+management ports (19999 to 29999 and 19990 to 29990)
+severnames and offset values (200 and 300)
+
+nohup sh domain.sh -b 127.0.0.1 -bmanagement 127.0.0.1 -Djboss.domain.base.dir=/usr/tomcat/jboss-eap-6.3/domain2 &
+
+
+
+
+
+
+
+Vertical Clustring	( same Box )
+
+
+nohup ./standalone.sh -c standalone-ha.xml -b 192.168.1.4 -u 230.0.0.4 -Djboss.server.base.dir=/data/dev/jboss-eap-6.1/node1 -Djboss.node.name=node1 &
+
+
+nohup ./standalone.sh -c standalone-ha.xml -b 192.168.1.4 -u 230.0.0.4 -Djboss.server.base.dir=/data/dev/jboss-eap-6.1/node2 -Djboss.node.name=node2 &
+
+
+nohup ./standalone.sh -c standalone-ha.xml -b 192.168.1.4 -u 230.0.0.4 -Djboss.server.base.dir=/data/dev/jboss-eap-6.1/node3 -Djboss.node.name=node3 &
+
+
+
+Harizantal Clustring  ( Different Box )
+
+
+nohup ./standalone.sh -c standalone-ha.xml -b 192.168.1.4 -u 230.0.0.4 -Djboss.server.base.dir=/data/dev/jboss-eap-6.1/node1 -Djboss.node.name=node1 &
+
+
+nohup ./standalone.sh -c standalone-ha.xml -b 192.168.1.5 -u 230.0.0.4 -Djboss.server.base.dir=/data/dev/jboss-eap-6.1/node1 -Djboss.node.name=node2 &
+
+
+nohup ./standalone.sh -c standalone-ha.xml -b 192.168.1.5 -u 230.0.0.4 -Djboss.server.base.dir=/data/dev/jboss-eap-6.1/node1 -Djboss.node.name=node3 &
+192.168.1.1
+
+Complete Host stop:
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command="/host=master:shutdown"
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command="/host=slave1:shutdown"
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command="/host=slave2:shutdown"
+
+
+jboss-cli.sh --connect --controller=127.0.0.1:9999 command="/host=hc1:shutdown"
+
+Individuval jboss servers stop /start
+
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=master/server-config=Appsrv01:stop
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave1/server-config=Appsrv02:stop
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave2/server-config=Appsrv03:stop
+
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=master/server-config=Appsrv01:start
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave1/server-config=Appsrv02:start
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/host=slave2/server-config=Appsrv03:start
+
+
+
+Server-group start stop
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/server-group=full-ha-server-group:start-servers
+
+
+jboss-cli.sh --connect --controller=192.168.1.1:9999 command=/server-group=full-ha-server-group:stop-servers
+
+
+
+
+
+
