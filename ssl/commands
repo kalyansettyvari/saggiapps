@@ -1,0 +1,113 @@
+Apache/Nginx
+==================
+openssl genrsa -des3 -out www.petclinic-awsdemos.com.key 2048
+
+openssl rsa -in www.petclinic-awsdemos.com.key -out www.petclinic-awsdemos.com.key
+
+openssl req -new -key www.petclinic-awsdemos.com.key -out www.petclinic-awsdemos.com.csr ---------------->
+
+
+to generate self-singed
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mysitename.key -out mysitename.crt
+==================================================================================================
+openssl x509 -noout -modulus -in www.petclinic-awsdemos.com.crt	 | openssl md5
+openssl rsa -noout -modulus -in www.petclinic-awsdemos.com.key | openssl md5
+openssl req -noout -modulus -in  www.petclinic-awsdemos.com.csr | openssl md5
+
+openssl x509 -in www.petclinic-awsdemos.com.crt -text -noout
+openssl req -text -noout -verify -in www.petclinic-awsdemos.com.csr
+
+
+NameVirtualHost IP_Address:443
+
+<VirtualHost *:443>
+    SSLEngine on
+    SSLCertificateFile 
+    SSLCertificateKeyFile 
+    
+    DocumentRoot /var/www/html
+    ServerName www.petclinic-awsdemos.com
+    
+</VirtualHost>
+
+=============================================================
+/keytool -genkey -alias tomcat -keyalg RSA -keysize 2048 -keypass "password" -storepass "password" -keystore keystore.jks
+
+
+CSR
+keytool -certreq -keyalg RSA -alias tomcat -file certreq.csr -keystore keystore.jks
+import
+
+/path/to/keytool -import -alias tomcat -keystore keystore.jks -trustcacerts -file root.cer
+
+keytool -import -alias tomcat -keystore keystore.jks  -file personal.cer
+
+<Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+           maxThreads="150" scheme="https" secure="true"
+           clientAuth="false" sslProtocol="TLS"
+           keystoreFile="/etc/httpd/ssl/keystore.jks"
+           keystorePass="password" />
+
+==========================================================================================================
+keytool -keysize 2048 -genkey -alias tomcat -keyalg RSA -keystore tomcat.keystore
+
+keytool -certreq -keyalg RSA -alias tomcat -file csr.csr -keystore tomcat.keystore
+
+
+Install the root certificate by running the following command:
+keytool -import -alias root -keystore tomcat.keystore -trustcacerts -file [name of the root certificate]
+Install the intermediate certificate by running the following command:
+keytool -import -alias intermed -keystore tomcat.keystore -trustcacerts -file [name of the intermediate certificate]
+Install the issued certificate into the keystore by running the following command:
+keytool -import -alias tomcat -keystore tomcat.keystore -trustcacerts -file [name of the certificate]
+
+---------------->
+alb--->targetgroup--->ec2(health)--unhelath status--->ec2 health
+
+
+
+
+
+
+#!/bin/bash
+yum install httpd -y
+echo "this is health page" >>/var/www/html/index.html
+
+
+
+
+DocumentRoot------------->PhysicalPath
+
+/var/log/messages------------------------>eventvwr(run)
+
+stop/start--->services.msc------------->IIS console(inetmgr)
+
+
+
+
+/var/log/cron
+
+/var/log/secure
+/
+
+
+client----->alb(https)-----------443-------->ec2(ssl)openssl-------------->tomcat(ssl)keytool
+
+https://www.sslshopper.com/article-most-common-openssl-commands.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
