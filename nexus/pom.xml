@@ -1,0 +1,34 @@
+pom.xml and settings.xml 
+
+<distributionManagement>
+    <snapshotRepository>
+        <id>InternalSnapshots</id>
+        <name>Internal Snapshots</name>
+        <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+    </snapshotRepository>
+    <repository>
+        <id>InternalReleases</id>
+        <name>Internal Releases</name>
+        <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+    </repository>
+</distributionManagement>
+
+https://github.com/gangireddydanam/spring3-mvc-maven-xml-hello-world.git
+
+<server>   
+    <id>890422</id>   
+  <username>admin</username>
+  <password>admin123</password>
+</server>
+
+<server>
+  <id>InternalReleases</id>
+  <username>admin</username>
+  <password>admin123</password>
+ </server> 
+  
+<server>
+  <id>InternalSnapshots</id>
+  <username>admin</username>
+  <password>admin123</password>
+ </server> 
